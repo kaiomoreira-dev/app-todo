@@ -2,7 +2,7 @@ body{
     overflow-x: hidden;
 }
 .container{
-    border: 1px solid green;
+    /* border: 1px solid green; */
     height: 100vh;
     display: flex;
     /* justify-content: center; */
