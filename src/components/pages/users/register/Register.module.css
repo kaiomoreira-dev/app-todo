@@ -2,6 +2,7 @@ body{
     overflow-x: hidden;
 }
 .container{
+    background-color: var(--gray-600);
     display: flex;
     min-height: 100vh;
     justify-content: center;
