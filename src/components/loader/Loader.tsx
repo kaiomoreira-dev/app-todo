@@ -9,7 +9,7 @@ export function Loader(){
         // Simule uma operação de carregamento
         setTimeout(() => {
           setLoading(false);
-        }, 600);
+        }, 800);
       }, []);
     return(
         <div className={loading ? styles.loader : ''}>
