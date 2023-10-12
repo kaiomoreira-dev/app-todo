@@ -10,6 +10,10 @@
     padding: 1rem;
 }
 
+.card:last-child{
+    margin-bottom: 1rem;
+}
+
 
 
 .card div img{
