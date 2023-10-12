@@ -4,6 +4,7 @@ body{
 }
 .container{
     display: flex;
+    background-color: var(--gray-600) !important;
     min-height: 100vh;
     justify-content: center;
     align-items: center;
