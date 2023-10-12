@@ -1,7 +1,7 @@
 body{
     overflow-x: hidden;
 }
-.container{
+#container{
     background-color: rgb(26, 26, 26) !important;
     display: flex;
     min-height: 100vh;
