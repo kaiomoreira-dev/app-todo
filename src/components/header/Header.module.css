@@ -5,6 +5,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    z-index: -1;
+    top: 0;
 }
 
 .space-icon{

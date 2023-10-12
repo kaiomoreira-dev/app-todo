@@ -170,18 +170,20 @@ export function Create(){
                 <p>Crie tarefas e organize seus itens a fazer</p>
             </div>
 
-            {  
-                todos.map((todo)=>{
-                    return(
-                        <Item 
-                        key={todo.id}
-                        id={todo.id}
-                        description={todo.description}
-                        completed={todo.completed}
-                        />
-                    )
-                })
-            }
+            <div className={styles.listTodos}>
+                {  
+                    todos.map((todo)=>{
+                        return(
+                            <Item 
+                            key={todo.id}
+                            id={todo.id}
+                            description={todo.description}
+                            completed={todo.completed}
+                            />
+                        )
+                    })
+                }
+            </div>
 
         </div>
     )
