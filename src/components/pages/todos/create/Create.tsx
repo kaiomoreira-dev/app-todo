@@ -7,6 +7,8 @@ import { Item } from '../../../item/Item';
 import { verifyRefreshToken } from '../../../../utils/verify-refresh-token';
 import { getAccessToken } from '../../../../utils/get-access-token';
 import clipBoard from '../../../../assets/clipboard.svg'
+import logoutImg from '../../../../assets/logout.png'
+
 
 interface ITodo{
     id: string,
@@ -70,6 +72,24 @@ export function Create(){
             ...descriptionTodo,
             [name]: value
         })
+    }
+
+    async function handleLogout(){
+        await fetch(`https://api-todo-oe5w.onrender.com/api/users/logout`,{
+            body: JSON.stringify(
+                {
+                    refreshToken: `${localStorage.getItem('refreshToken')}`
+                }
+            ),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
+        window.location.href = '/login'
     }
 
     useEffect(()=>{
@@ -140,6 +160,10 @@ export function Create(){
     return(
         <div className={styles.container}>
             <Header />
+            <div className={styles.logout} onClick={handleLogout}>
+                Sair
+                <img src={logoutImg} alt="" />
+            </div>
             <form 
             action=""
             className={styles.form}

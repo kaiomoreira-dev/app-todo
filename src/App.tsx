@@ -12,6 +12,10 @@ export default function App() {
 
   useEffect(()=>{
       async function checkToken() {
+        if(!localStorage.getItem('refreshToken')){
+          setIsValidRefreshToken(false)
+          return
+        }
         const isValidRefreshToken = await verifyRefreshToken()
         setIsValidRefreshToken(isValidRefreshToken)
       }
