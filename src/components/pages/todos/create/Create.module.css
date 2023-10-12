@@ -48,8 +48,8 @@ body{
     border:none
 }
 
-.footer button{
-    background-color: var(--blue);
+.btnCriar{
+    background-color: var(--blue-dark);
     width: 5rem;
     height: 3rem;
     border-radius: 0.3rem;
@@ -58,8 +58,8 @@ body{
     font-weight: bold;
 }
 
-.footer button:hover {
-    background-color: var(--purple-light);
+.btnCriar:hover {
+    background-color: var(--blue);
     cursor: pointer;
 }
 

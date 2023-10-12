@@ -150,7 +150,7 @@ export function Create(){
                     <input type="text" value={descriptionTodo.description} onChange={handleOnChange} id="description" name="description" required placeholder='Adicionar uma nova tarefa' />
                 </fieldset>
                 <footer className={styles.footer}>
-                    <button type="submit">Criar</button>
+                    <button className={styles.btnCriar} type="submit">Criar</button>
                 </footer>
             </form>
 
