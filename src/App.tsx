@@ -8,7 +8,7 @@ import { verifyRefreshToken } from './utils/verify-refresh-token';
 import { useEffect, useState } from 'react';
 
 export default function App() {
-  const [isValidRefreshToken, setIsValidRefreshToken] = useState<null | boolean>(null)
+  const [isValidRefreshToken, setIsValidRefreshToken] = useState<boolean>(false)
 
   useEffect(()=>{
       async function checkToken() {
