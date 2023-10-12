@@ -2,6 +2,7 @@ body{
     overflow-x: hidden;
 }
 .container{
+    background-color: #1A1A1A;
     display: flex;
     min-height: 100vh;
     align-items: center;

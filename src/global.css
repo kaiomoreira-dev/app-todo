@@ -32,11 +32,10 @@
     border-radius: 0.3rem;
 }
 
-body, button, textarea, input, .container{
+body, button, textarea, input{
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     color: var(--gray-100);
-    background-color: #1A1A1A;
     /* unidade de medida rem para se ajustar 
     o tamanho da letra com o tamanho da view
     caso usuário alterar.

@@ -3,6 +3,7 @@ body{
 }
 .container{
     /* border: 1px solid green; */
+    background-color: #1A1A1A;
     min-height: 100vh;
     display: flex;
     /* justify-content: center; */
