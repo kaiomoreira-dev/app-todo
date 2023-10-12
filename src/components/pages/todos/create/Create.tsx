@@ -6,6 +6,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { Item } from '../../../item/Item';
 import { verifyRefreshToken } from '../../../../utils/verify-refresh-token';
 import { getAccessToken } from '../../../../utils/get-access-token';
+import clipBoard from '../../../../assets/clipboard.svg'
 
 interface ITodo{
     id: string,
@@ -162,7 +163,7 @@ export function Create(){
         
             <div className={todos.length > 0 ? styles['container-off'] : styles['container-title']}>
                 <div>
-                    <img src="./src/assets/clipboard.svg" alt="" />
+                    <img src={clipBoard} alt="" />
                 </div>
 
                 <p><strong>Você ainda não tem tarefas cadastradas</strong></p>

@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import styles from './Item.module.css';
+import checkTrue from '../../assets/check-true.svg'
+import checkFalse from '../../assets/check-false.svg'
+import hoverCheckFalse from '../../assets/hover-check-false.svg'
+import hoverCheckTrue from '../../assets/hover-check-true.svg'
+import trash from '../../assets/trash.svg'
+import hoverTrash from '../../assets/hover-trash.svg'
 
 interface IPropdItem{
     id: string,
@@ -11,14 +17,6 @@ export function Item({id, completed, description}: IPropdItem){
 
     const [hoveredCheck, setHoveredCheck] = useState(false)
     const [hoveredTrash, setHoveredTrash] = useState(false)
-
-    const checkTrue = "./src/assets/check-true.svg"
-    const checkFalse = "./src/assets/check-false.svg"
-    const hoverCheckFalse = "./src/assets/hover-check-false.svg"
-    const hoverCheckTrue= "./src/assets/hover-check-true.svg"
-
-    const trash = "./src/assets/trash.svg"
-    const hoverTrash = "./src/assets/hover-trash.svg"
 
     //[x] criar função para mudar o o estado ckeckbox mouse house está ativado
     function handleMouseEnterCheck(){
