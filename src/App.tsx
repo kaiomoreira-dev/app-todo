@@ -1,6 +1,6 @@
 /* eslint-disable no-cond-assign */
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './global.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Create } from './components/pages/todos/create/Create';
 import { Register } from './components/pages/users/register/Register';
 import { Login } from './components/pages/users/login/Login';
