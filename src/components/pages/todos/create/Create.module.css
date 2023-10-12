@@ -1,10 +1,8 @@
-@import 'normalize.css';
 body{
     overflow-x: hidden;
 }
 .container{
     /* border: 1px solid green; */
-    background-color: var(--gray-600) !important;
     min-height: 100vh;
     display: flex;
     /* justify-content: center; */
