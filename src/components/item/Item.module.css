@@ -37,3 +37,10 @@
     font-size: 1rem;
     margin: 0 1rem;
 }
+
+@media (max-width: 576px) {
+    .card{
+        width: 33rem;
+    }
+    
+  }

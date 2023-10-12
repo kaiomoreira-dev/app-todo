@@ -92,4 +92,8 @@ body{
     text-decoration: underline;
 }
 
-
+@media (max-width: 576px) {
+    .form{
+        width: 28rem;
+    }
+}

@@ -8,6 +8,7 @@ import { verifyRefreshToken } from '../../../../utils/verify-refresh-token';
 import { getAccessToken } from '../../../../utils/get-access-token';
 import clipBoard from '../../../../assets/clipboard.svg'
 import logoutImg from '../../../../assets/logout.png'
+import { Loader } from '../../../loader/Loader';
 
 
 interface ITodo{
@@ -159,6 +160,7 @@ export function Create(){
     
     return(
         <div className={styles.container}>
+            <Loader />
             <Header />
             <div className={styles.logout} onClick={handleLogout}>
                 Sair

@@ -1,0 +1,23 @@
+.loader{
+    background-color: var(--gray-600);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader img{
+    margin-bottom: 13rem;
+    font-size: 50px;
+    animation: spin 2s linear infinite; /* Adiciona a animação de rotação */
+}
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

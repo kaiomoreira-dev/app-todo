@@ -102,3 +102,23 @@ body{
     cursor: pointer;
     text-decoration: underline;
 }
+
+@media (max-width: 576px) {
+    .fieldset > input{
+        width: 28rem;
+    }
+
+    .title{
+        width: 33rem;
+    }
+
+    .form{
+        display: flex;
+        gap: 0.5rem;
+        margin-top: -3.2rem;
+    }
+
+    /* .logout{
+        display: none;
+    } */
+}
