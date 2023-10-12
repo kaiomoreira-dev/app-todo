@@ -105,11 +105,11 @@ body{
 
 @media (max-width: 576px) {
     .fieldset > input{
-        width: 28rem;
+        width: 20rem;
     }
 
     .title{
-        width: 33rem;
+        width: 20rem;
     }
 
     .form{
