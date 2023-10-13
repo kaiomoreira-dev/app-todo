@@ -24,6 +24,11 @@ body{
     margin-top: 2rem;
 
 }
+
+.fieldset label{
+    font-size: 0.9rem;
+}
+
 .fieldset{
     padding: 3rem 2rem;
     border: none;

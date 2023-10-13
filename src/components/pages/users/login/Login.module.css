@@ -41,6 +41,9 @@ body{
     justify-content: center;
 }
 
+.fieldset label{
+    font-size: 0.9rem;
+}
 .fieldset > input{
     border: 1px solid var(--gray-300);
     height: 3.5rem;
