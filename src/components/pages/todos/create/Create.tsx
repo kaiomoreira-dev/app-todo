@@ -39,12 +39,19 @@ export function Create(){
 
     const [countCompletedTodos, setCountCompletedTodos] = useState<number>(0)
 
-    // const [menu, setMenu] = useState<boolean>(false)
+    const [menu, setMenu] = useState<boolean>(false)
 
     function handleMenu(){
-        const element = document.getElementsByClassName('.navbar-mobile')
+        const element = document.getElementById('select-mobile') as HTMLElement;
 
-        console.log(element)
+        if(!menu){
+            element.style.display = 'block'
+            setMenu(true)
+            return
+        }
+        element.style.display = 'none'
+        setMenu(false)
+
     }
 
     //[x] criar metodo para enviar as informações para a API do backend
@@ -175,8 +182,8 @@ export function Create(){
             <div className={styles.hamburguer} onClick={handleMenu}>
                 <img src={hamburgerImg} alt="" />
             </div>
-            <div className={styles['navbar-mobile']}>
-                <div>
+            <div id='select-mobile' className={styles['navbar-mobile']}>
+                <div onClick={handleLogout}>
                 <img src={logoutImg} alt="" /> 
                 <span>Sair</span>
                 </div>
