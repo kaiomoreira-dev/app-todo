@@ -67,7 +67,7 @@ export function Login(){
             onSubmit={handleLoginUser}
             >
                 <fieldset className={styles.fieldset} form='register-account' name='group-register'>
-                    <span className={styles.title}><p>Login</p></span>
+                    <span className={styles.title}><p>Conectar-se</p></span>
 
                     <label htmlFor="email">E-mail</label>
                     <input type="text" value={loginUser.email} onChange={handleOnChange} name="email" id="email" required placeholder='example@email.com' />

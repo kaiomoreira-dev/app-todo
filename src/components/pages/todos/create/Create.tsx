@@ -7,7 +7,8 @@ import { Item } from '../../../item/Item';
 import { verifyRefreshToken } from '../../../../utils/verify-refresh-token';
 import { getAccessToken } from '../../../../utils/get-access-token';
 import clipBoard from '../../../../assets/clipboard.svg'
-import logoutImg from '../../../../assets/logout.png'
+import logoutImg from '../../../../assets/logout.png';
+import hamburgerImg from '../../../../assets/hamburger.png';
 import { Loader } from '../../../loader/Loader';
 
 
@@ -29,6 +30,7 @@ export function Create(){
     const [descriptionTodo, setDescriptionTodo] = useState<IDescription>({
         description: ''
     } as IDescription)
+    
 
     //[x] criar estado para armazenar a lista de tarefas
     const [todos, setTodos] = useState<ITodo[]>([])
@@ -36,6 +38,14 @@ export function Create(){
     const [countAllTodos, setCountAllTodos] = useState<number>(0)
 
     const [countCompletedTodos, setCountCompletedTodos] = useState<number>(0)
+
+    const [menu, setMenu] = useState<boolean>(false)
+
+    function handleMenu(){
+        const element = document.getElementsByClassName('.navbar-mobile')
+
+        console.log(element)
+    }
 
     //[x] criar metodo para enviar as informações para a API do backend
     async function handleCreateTodo(event: FormEvent<HTMLFormElement>){
@@ -162,6 +172,15 @@ export function Create(){
         <div className={styles.container}>
             <Loader />
             <Header />
+            <div className={styles.hamburguer} onClick={handleMenu}>
+                <img src={hamburgerImg} alt="" />
+            </div>
+            <div className={styles['navbar-mobile']}>
+                <div>
+                <img src={logoutImg} alt="" /> 
+                <span>Sair</span>
+                </div>
+            </div>
             <div className={styles.logout} onClick={handleLogout}>
                 Sair
                 <img src={logoutImg} alt="" />
