@@ -94,10 +94,10 @@ export function Register(){
                     <label htmlFor="email">E-mail</label>
                     <input type="text" value={registerUser.email} onChange={handleOnChange} name="email" id="email" required placeholder='example@email.com' />
                 
-                    <label htmlFor="password">Crie sua senha</label>
+                    <label htmlFor="password">Senha</label>
                     <input type="password" value={registerUser.password} onChange={handleOnChange} name="password" id="password" required placeholder='Digite sua senha' />
 
-                    <label htmlFor="confirmPassword">Confirme sua senha</label>
+                    <label htmlFor="confirmPassword">Confirmar senha</label>
                     <input type="password" value={registerUser.confirmPassword} pattern={registerUser.password} title='A senha e a confirmação de senha não coincidem. Por favor, tente novamente' onChange={handleOnChange} name="confirmPassword" id="confirmPassword" required placeholder='Confirme sua senha' />
                 </fieldset>
                 <footer className={styles.footer}>
