@@ -39,7 +39,7 @@ export function Create(){
 
     const [countCompletedTodos, setCountCompletedTodos] = useState<number>(0)
 
-    const [menu, setMenu] = useState<boolean>(false)
+    // const [menu, setMenu] = useState<boolean>(false)
 
     function handleMenu(){
         const element = document.getElementsByClassName('.navbar-mobile')
