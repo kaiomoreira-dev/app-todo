@@ -10,6 +10,7 @@ import clipBoard from '../../../../assets/clipboard.svg'
 import logoutImg from '../../../../assets/logout.png';
 import hamburgerImg from '../../../../assets/hamburger.png';
 import { Loader } from '../../../loader/Loader';
+import { Footer } from '../../../footer/Footer';
 
 
 interface ITodo{
@@ -189,8 +190,8 @@ export function Create(){
                 </div>
             </div>
             <div className={styles.logout} onClick={handleLogout}>
-                Sair
                 <img src={logoutImg} alt="" />
+                Sair
             </div>
             <form 
             action=""
@@ -236,7 +237,7 @@ export function Create(){
                     })
                 }
             </div>
-
+            <Footer />
         </div>
     )
 }

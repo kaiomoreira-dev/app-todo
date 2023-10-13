@@ -2,6 +2,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import {Header} from '../../../header/Header'
 import styles from './Register.module.css'
+import { Footer } from '../../../footer/Footer'
 
 export interface IUser{
     firstname?: string,
@@ -109,6 +110,7 @@ export function Register(){
                     </span>
                 </footer>
             </form>
+            <Footer />
         </div>
     )
 }

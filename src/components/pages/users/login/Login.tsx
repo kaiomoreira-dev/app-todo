@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { Header } from '../../../header/Header'
 import styles from './Login.module.css'
+import { Footer } from '../../../footer/Footer';
 
 export interface IUser{
     email: string,
@@ -85,6 +86,7 @@ export function Login(){
                     </span>
                 </footer>
             </form>
+            <Footer />
         </div>
     )
 }
