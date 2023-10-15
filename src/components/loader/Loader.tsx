@@ -4,7 +4,6 @@ import loadingImg from '../../assets/loading.png';
 
 export function Loader(){
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         // Simule uma operação de carregamento
         setTimeout(() => {

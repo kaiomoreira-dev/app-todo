@@ -178,8 +178,8 @@ export function Create(){
     
     return(
         <div className={styles.container}>
-            <Loader />
             <Header />
+            <Loader />
             <div className={styles.hamburguer} onClick={handleMenu}>
                 <img src={hamburgerImg} alt="" />
             </div>
