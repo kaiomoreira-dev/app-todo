@@ -16,7 +16,7 @@ export function VerifyEmail(){
                 Parabéns! Seu e-mail foi verificado com sucesso. Agora você está pronto para aproveitar ao máximo nossa plataforma. Continue explorando e aproveitando todos os recursos que temos a oferecer. 
                 </p>
                 <span className={styles.icon}>
-                 Equipe Todo
+                 Equipe
                  <img src={rocketImg} alt="" />
                  <img src={todoImg} alt="" />
                 </span>
