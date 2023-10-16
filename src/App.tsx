@@ -6,6 +6,7 @@ import { Register } from './components/pages/users/register/Register';
 import { Login } from './components/pages/users/login/Login';
 import { verifyRefreshToken } from './utils/verify-refresh-token';
 import { useEffect, useState } from 'react';
+import { VerifyEmail } from './components/pages/users/verify-email/Veirfy-Email';
 
 export default function App() {
   const [isValidRefreshToken, setIsValidRefreshToken] = useState<boolean>(false)
@@ -26,6 +27,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={isValidRefreshToken ? <Create /> : <Login />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>
