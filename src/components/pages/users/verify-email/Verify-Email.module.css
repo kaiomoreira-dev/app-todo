@@ -19,6 +19,8 @@ body{
 
 .verification-content img{
     margin: 3rem 0;
+    width: 4rem;
+    height: 4rem;
 }
 
 .verification-content strong{
