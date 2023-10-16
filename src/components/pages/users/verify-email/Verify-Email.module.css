@@ -9,12 +9,12 @@ body{
 }
 
 .verification-content{
-    min-height: 80vh;
-    width: 60vw;
+    min-height: 100vh;
+    width: 100vw;
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 3rem;
+    margin-top: 5rem;
 }
 
 .verification-content img{
@@ -53,4 +53,11 @@ body{
     height: 3rem;
 }
 
+@media (max-width: 576px) {
+    .verification-content{
+        min-height: 100vh;
+        width: 100vw;
+        
+    }
+}
 
