@@ -23,8 +23,7 @@ export default function App() {
       }
       async function blockScreen() {
         const hasVisited = localStorage.getItem('hasVisited')
-
-        if(!hasVisited?.includes('true')){
+        if(hasVisited !== 'true'){
           setBlock(true)
           return
         }
