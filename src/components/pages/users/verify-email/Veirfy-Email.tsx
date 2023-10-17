@@ -34,7 +34,7 @@ export function VerifyEmail(){
 
             setTimeout(()=>{
                 window.location.href = '/login'
-            }, 10000)
+            }, 20000)
 
        } catch (error) {
         console.log(error)
