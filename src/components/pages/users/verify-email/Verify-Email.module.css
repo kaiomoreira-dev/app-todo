@@ -26,6 +26,7 @@ body{
 .verification-content strong{
     font-size: 2rem;
     margin-bottom: 3rem;
+    line-height: 2.5rem;
 }
 
 .verification-content p{
@@ -54,10 +55,27 @@ body{
 }
 
 @media (max-width: 576px) {
+    .verification-content img{
+        width: 3rem;
+        height: 3rem;
+    }
+
     .verification-content{
-        min-height: 100vh;
-        width: 100vw;
+        width: 80vw;
         
+    }
+
+    .verification-content strong{
+        width: 20rem;
+        font-size: 1.8rem;
+    }
+
+    .verification-content p{
+        width: 20rem;
+    }
+
+    .icon{
+        width: 20rem;
     }
 }
 

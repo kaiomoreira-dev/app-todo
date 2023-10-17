@@ -5,27 +5,31 @@ import verificationImg from '../../../../assets/verification.png';
 import rocketImg from '../../../../assets/rocket.svg';
 import todoImg from '../../../../assets/todo.svg';
 import { useLocation } from 'react-router';
+import { useEffect } from 'react';
 
 export function VerifyEmail(){
     const { search } = useLocation();
 
     const params = new URLSearchParams(search);
+    const email = params.get('email');
     const token = params.get('token');  
-    console.log(token);
 
-    // async function verifyEmail(){
-    //     const passowrd = ''
-    //     const response = await fetch(`http://localhost:3000/api/users/verify-email?token=${token}`, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({ passowrd }),
-    //     });
+   useEffect(()=>{
+    async function verifyEmail(){
+        const response = await fetch(`http://localhost:3000/api/users/verify-email?email=${email}&token=${token}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ passowrd: '123456789' }),
+        });
 
-    //     const data = await response.json();
-    //     console.log(data);
-    // }
+        const data = await response.json();
+        console.log(data);
+    }
+
+    verifyEmail()
+   })
 
     return(
         <div className={styles.container}>
@@ -41,6 +45,7 @@ export function VerifyEmail(){
                  <img src={rocketImg} alt="" />
                  <img src={todoImg} alt="" />
                 </span>
+                <button>Confirmar</button>
             </div>
             <Footer />
         </div>
