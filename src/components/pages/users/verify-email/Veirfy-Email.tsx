@@ -37,16 +37,17 @@ export function VerifyEmail(){
             localStorage.setItem('hasVisited', 'true')
 
             async function login(){
-                console.log('login')
                 return new Promise((resolve) => {
                     setTimeout(()=>{
-                    window.location.href = '/login'
                     resolve(true)
-
                 }, 20000)
                 } )
             }
-            login()
+            login().then((result)=>{
+                if (result) {
+                    window.location.href = '/login';
+                }
+            })
 
        } catch (error) {
         console.log(error)
