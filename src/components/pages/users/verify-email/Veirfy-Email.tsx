@@ -1,3 +1,5 @@
+/* eslint-disable no-inner-declarations */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Footer } from '../../../footer/Footer';
 import { Header } from '../../../header/Header';
 import styles from './Verify-Email.module.css';
@@ -33,9 +35,15 @@ export function VerifyEmail(){
 
             localStorage.setItem('hasVisited', 'true')
 
-            setTimeout(()=>{
-                window.location.href = '/login'
-            }, 20000)
+            async function login(){
+                return new Promise((resolve) => {
+                    setTimeout(()=>{
+                    window.location.href = '/login'
+                }, 20000)
+                resolve(true)
+                } )
+            }
+            login()
 
        } catch (error) {
         console.log(error)
