@@ -26,8 +26,6 @@ export default function App() {
         if(hasVisited === 'true'){
           setBlock(true)
           return
-        }else{
-          setBlock(true)
         }
       }
       checkToken()
