@@ -22,11 +22,15 @@ export function VerifyEmail(){
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({})
             });
 
-            if(!response.ok) throw new Error('Erro ao verificar e-mail')
+            const data = await response.json();
+            console.log(response.status)
 
             async function redirect(){
+                console.log('aqui')
+
                 return new Promise((resolve) => {
                     setTimeout(()=>{
                     resolve(true)
