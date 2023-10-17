@@ -17,14 +17,6 @@ export function VerifyEmail(){
 
     async function verifyEmail(){
        try {
-            const hasVisited = localStorage.getItem('hasVisited')
-            console.log(hasVisited)
-            if(hasVisited === 'true'){
-                console.log('hasVisited')
-                window.location.href = '/login'
-                return
-            }
-            
             const response = await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
@@ -34,21 +26,18 @@ export function VerifyEmail(){
 
             if(!response.ok) throw new Error('Erro ao verificar e-mail')
 
-            localStorage.setItem('hasVisited', 'true')
-
-            async function login(){
+            async function redirect(){
                 return new Promise((resolve) => {
                     setTimeout(()=>{
                     resolve(true)
                 }, 20000)
                 } )
             }
-            login().then((result)=>{
+            redirect().then((result)=>{
                 if (result) {
                     window.location.href = '/login';
                 }
             })
-
        } catch (error) {
         console.log(error)
        }
