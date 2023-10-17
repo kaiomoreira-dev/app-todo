@@ -180,62 +180,64 @@ export function Create(){
         <div className={styles.container}>
             <Header />
             <Loader />
-            <div className={styles.hamburguer} onClick={handleMenu}>
-                <img src={hamburgerImg} alt="" />
-            </div>
-            <div id='select-mobile' className={styles['navbar-mobile']}>
-                <div onClick={handleLogout}>
-                <img src={logoutImg} alt="" /> 
-                <span>Sair</span>
+            <div className={styles['main-content']}>
+                <div className={styles.hamburguer} onClick={handleMenu}>
+                    <img src={hamburgerImg} alt="" />
                 </div>
-            </div>
-            <div className={styles.logout} onClick={handleLogout}>
-                <img src={logoutImg} alt="" />
-                Sair
-            </div>
-            <form 
-            action=""
-            className={styles.form}
-            id="create-todo"
-            onSubmit={handleCreateTodo}
-            >
-                <fieldset className={styles.fieldset}>
-                    <input type="text" value={descriptionTodo.description} onChange={handleOnChange} id="description" name="description" required placeholder='Adicionar uma nova tarefa' />
-                </fieldset>
-                <footer className={styles.footer}>
-                    <button className={styles.btnCriar} type="submit">Criar</button>
-                </footer>
-            </form>
-
-            <div className={styles.title}>
-                <div>
-                    Tarefas Criadas <span>{countAllTodos}</span>
+                <div id='select-mobile' className={styles['navbar-mobile']}>
+                    <div onClick={handleLogout}>
+                    <img src={logoutImg} alt="" /> 
+                    <span>Sair</span>
+                    </div>
                 </div>
-                <span>{countCompletedTodos} de {countAllTodos}</span>
-            </div>
-        
-            <div className={todos.length > 0 ? styles['container-off'] : styles['container-title']}>
-                <div>
-                    <img src={clipBoard} alt="" />
+                <div className={styles.logout} onClick={handleLogout}>
+                    <img src={logoutImg} alt="" />
+                    Sair
+                </div>
+                <form 
+                action=""
+                className={styles.form}
+                id="create-todo"
+                onSubmit={handleCreateTodo}
+                >
+                    <fieldset className={styles.fieldset}>
+                        <input type="text" value={descriptionTodo.description} onChange={handleOnChange} id="description" name="description" required placeholder='Adicionar uma nova tarefa' />
+                    </fieldset>
+                    <footer className={styles.footer}>
+                        <button className={styles.btnCriar} type="submit">Criar</button>
+                    </footer>
+                </form>
+
+                <div className={styles.title}>
+                    <div>
+                        Tarefas Criadas <span>{countAllTodos}</span>
+                    </div>
+                    <span>{countCompletedTodos} de {countAllTodos}</span>
+                </div>
+            
+                <div className={todos.length > 0 ? styles['container-off'] : styles['container-title']}>
+                    <div>
+                        <img src={clipBoard} alt="" />
+                    </div>
+
+                    <p><strong>Você ainda não tem tarefas cadastradas</strong></p>
+                    <p>Crie tarefas e organize seus itens a fazer</p>
                 </div>
 
-                <p><strong>Você ainda não tem tarefas cadastradas</strong></p>
-                <p>Crie tarefas e organize seus itens a fazer</p>
-            </div>
-
-            <div className={styles.listTodos}>
-                {  
-                    todos.map((todo)=>{
-                        return(
-                            <Item 
-                            key={todo.id}
-                            id={todo.id}
-                            description={todo.description}
-                            completed={todo.completed}
-                            />
-                        )
-                    })
-                }
+                <div className={styles.listTodos}>
+                    {  
+                        todos.map((todo)=>{
+                            return(
+                                <Item 
+                                key={todo.id}
+                                id={todo.id}
+                                description={todo.description}
+                                completed={todo.completed}
+                                />
+                            )
+                        })
+                    }
+                </div>
             </div>
             <Footer />
         </div>

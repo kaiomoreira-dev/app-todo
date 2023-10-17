@@ -62,30 +62,32 @@ export function Login(){
     
     <div className={styles.container}>
             <Header/>
-            <form 
-            className={styles.form} 
-            id="register-account" 
-            onSubmit={handleLoginUser}
-            >
-                <fieldset className={styles.fieldset} form='register-account' name='group-register'>
-                    <span className={styles.title}><p>Conectar-se</p></span>
+            <div className={styles['form-center']}>
+                <form 
+                className={styles.form} 
+                id="register-account" 
+                onSubmit={handleLoginUser}
+                >
+                    <fieldset className={styles.fieldset} form='register-account' name='group-register'>
+                        <span className={styles.title}><p>Conectar-se</p></span>
 
-                    <label htmlFor="email">E-mail</label>
-                    <input type="text" value={loginUser.email} onChange={handleOnChange} name="email" id="email" required placeholder='example@email.com' />
-                
-                    <label htmlFor="password">Senha</label>
-                    <input type="password" value={loginUser.password} onChange={handleOnChange} name="password" id="password" required placeholder='Digite sua senha' />
-                </fieldset>
-                <footer className={styles.footer}>
-                <button type='submit'>Entrar</button>
-                    <span>
-                        <p>
-                            Não possui cadastro?
-                        </p>
-                        <a href="/register">fazer cadastro</a>
-                    </span>
-                </footer>
-            </form>
+                        <label htmlFor="email">E-mail</label>
+                        <input type="text" value={loginUser.email} onChange={handleOnChange} name="email" id="email" required placeholder='example@email.com' />
+                    
+                        <label htmlFor="password">Senha</label>
+                        <input type="password" value={loginUser.password} onChange={handleOnChange} name="password" id="password" required placeholder='Digite sua senha' />
+                    </fieldset>
+                    <footer className={styles.footer}>
+                    <button type='submit'>Entrar</button>
+                        <span>
+                            <p>
+                                Não possui cadastro?
+                            </p>
+                            <a href="/register">fazer cadastro</a>
+                        </span>
+                    </footer>
+                </form>
+            </div>
             <Footer />
         </div>
     )

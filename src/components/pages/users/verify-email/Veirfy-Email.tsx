@@ -29,16 +29,16 @@ export function VerifyEmail(){
         localStorage.setItem('hasVisited', 'true')
     }
 
-    async function blockScreen() {
-        const hasVisited = localStorage.getItem('hasVisited')
-        console.log(hasVisited)
-        if(hasVisited !== 'true'){
-          window.location.href = '/login'
-          return
-        }
-      }
-    verifyEmail()
-    blockScreen()
+    // async function blockScreen() {
+    //     const hasVisited = localStorage.getItem('hasVisited')
+    //     console.log(hasVisited)
+    //     if(hasVisited !== 'true'){
+    //       window.location.href = '/login'
+    //       return
+    //     }
+    //   }
+    // verifyEmail()
+    // blockScreen()
    })
 
     return(

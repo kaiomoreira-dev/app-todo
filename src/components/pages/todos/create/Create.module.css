@@ -2,11 +2,15 @@ body{
     overflow-x: hidden;
 }
 .container{
-    min-height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
     /* margin-top: 10rem; */
+}
+
+.main-content{
+    min-height: 100vh;
+    z-index: 1;
 }
 
 .container-title{

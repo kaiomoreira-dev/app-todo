@@ -8,20 +8,25 @@ body{
     flex-direction: column;
 }
 
+.form-center{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin: 5rem 0;
+}
+
 .form{
     box-shadow: 0 0 2rem black;
-    height: auto;
-    width: 28rem;
+    height: 35rem;
+    width: 35rem;
     padding: 0.5rem 0.5rem 3.5rem 0.5rem;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;   
     flex-direction: column;
-    margin-top: 3rem;
-    margin-bottom: 5rem;
-
 }
+
 .fieldset{
     padding: 3rem 2rem;
     border: none;
@@ -95,6 +100,8 @@ body{
 .footer span:last-child a:hover {
     text-decoration: underline;
 }
+
+
 
 @media (max-width: 576px) {
     .form{
