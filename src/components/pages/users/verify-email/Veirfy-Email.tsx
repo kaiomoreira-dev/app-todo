@@ -16,7 +16,7 @@ export function VerifyEmail(){
 
    useEffect(()=>{
     async function verifyEmail(){
-        const response = await fetch(`http://localhost:3000/api/users/verify-email?email=${email}&token=${token}`, {
+        const response = await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,7 +45,6 @@ export function VerifyEmail(){
                  <img src={rocketImg} alt="" />
                  <img src={todoImg} alt="" />
                 </span>
-                <button>Confirmar</button>
             </div>
             <Footer />
         </div>
