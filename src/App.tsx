@@ -25,7 +25,6 @@ export default function App() {
         const hasVisited = localStorage.getItem('hasVisited')
         if(hasVisited !== 'true'){
           setBlock(true)
-          window.location.href = '/login'
           return
         }
       }

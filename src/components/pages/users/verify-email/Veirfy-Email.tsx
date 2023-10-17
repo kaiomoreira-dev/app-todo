@@ -18,6 +18,7 @@ export function VerifyEmail(){
     async function verifyEmail(){
        try {
             const hasVisited = localStorage.getItem('hasVisited')
+            console.log(hasVisited)
             if(hasVisited === 'true'){
                 console.log('hasVisited')
                 window.location.href = '/login'
@@ -36,6 +37,7 @@ export function VerifyEmail(){
             localStorage.setItem('hasVisited', 'true')
 
             async function login(){
+                console.log('login')
                 return new Promise((resolve) => {
                     setTimeout(()=>{
                     window.location.href = '/login'
