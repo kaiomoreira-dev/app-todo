@@ -10,7 +10,7 @@ import { VerifyEmail } from './components/pages/users/verify-email/Veirfy-Email'
 
 export default function App() {
   const [isValidRefreshToken, setIsValidRefreshToken] = useState<boolean>(false)
-  // const [block, setBlock] = useState<boolean>(false)
+  const [block, setBlock] = useState<boolean>(false)
 
   useEffect(()=>{
       async function checkToken() {
@@ -21,22 +21,25 @@ export default function App() {
         const isValidRefreshToken = await verifyRefreshToken()
         setIsValidRefreshToken(isValidRefreshToken)
       }
-      // async function blockScreen() {
-      //   const hasVisited = localStorage.getItem('hasVisited')
-      //   if(hasVisited !== 'true'){
-      //     setBlock(true)
-      //     return
-      //   }
-      // }
+      async function blockScreen() {
+        const hasVisited = localStorage.getItem('hasVisited')
+        if(hasVisited === 'true'){
+          setBlock(true)
+          return
+        }else{
+          setBlock(true)
+          window.location.href = '/login'
+        }
+      }
       checkToken()
-      // blockScreen()
+      blockScreen()
   })
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={isValidRefreshToken ? <Create /> : <Login />} />
-          <Route path="/verify-email" element={<VerifyEmail />} />
+          <Route path="/verify-email" element={block ? <Login /> : <VerifyEmail />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>

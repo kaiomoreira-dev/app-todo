@@ -25,13 +25,9 @@ export function VerifyEmail(){
                 body: JSON.stringify({})
             });
 
-            const data = await response.json();
-            console.log(data)
-            console.log(response.status)
-
+            await response.json();
+            localStorage.setItem('hasVisited', 'true')
             async function redirect(){
-                console.log('aqui')
-
                 return new Promise((resolve) => {
                     setTimeout(()=>{
                     resolve(true)
