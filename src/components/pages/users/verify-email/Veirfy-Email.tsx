@@ -5,7 +5,6 @@ import verificationImg from '../../../../assets/verification.png';
 import rocketImg from '../../../../assets/rocket.svg';
 import todoImg from '../../../../assets/todo.svg';
 import { useLocation } from 'react-router';
-import { useEffect } from 'react';
 
 export function VerifyEmail(){
     const { search } = useLocation();
@@ -14,40 +13,37 @@ export function VerifyEmail(){
     const email = params.get('email');
     const token = params.get('token');  
 
-   useEffect(()=>{
     async function verifyEmail(){
-        const response = await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ passowrd: '123456789' }),
-        });
+       try {
+            const response = await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            
+            if(response.ok){
+                const firstVisitTimestamp = localStorage.get('firtVisitTimestamp');
 
-        const data = await response.json();
-        console.log(data);
-        localStorage.setItem('hasVisited', 'true')
-    }
+                if(!firstVisitTimestamp){
+                    localStorage.setItem('firstVisitTimestamp', Date.now() as unknown as string);
+                }else{
+                    const currentTime = Date.now();
+                    const oneMinute = 60 * 1000;
 
-    async function blockScreen() {
-        return new Promise((resolve) => {
-            const hasVisited = localStorage.getItem('hasVisited')
-            console.log
-            if(hasVisited !== 'true'){
-                window.location.href = '/login'
-              return
+                    if (currentTime - parseInt(firstVisitTimestamp, 10) > oneMinute) {
+                        window.location.href = '/login';
+                    } else {
+                        localStorage.setItem('visitedVerifyEmailPage', 'true');
+                    }
+                }
             }
-            setTimeout(() => {
-                window.location.href = '/login'
-              }, 1000)
-            return resolve(true)
-        })
-        
-      }
+       } catch (error) {
+            window.location.href = '/login';
+            console.log(error)
+       }
+    }
     verifyEmail()
-    blockScreen()
-   })
-
     return(
         <div className={styles.container}>
             <Header />
