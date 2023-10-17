@@ -17,6 +17,12 @@ export function VerifyEmail(){
 
     async function verifyEmail(){
        try {
+            const hasVisited = localStorage.getItem('hasVisited')
+            if(hasVisited === 'true'){
+                window.location.href = '/login';
+                return
+            }
+        
             const response = await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
@@ -24,7 +30,7 @@ export function VerifyEmail(){
                 },
                 body: JSON.stringify({})
             });
-            
+
             await response.json();
             localStorage.setItem('hasVisited', 'true')
             async function redirect(){
