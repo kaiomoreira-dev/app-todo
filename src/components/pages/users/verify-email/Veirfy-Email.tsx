@@ -32,13 +32,14 @@ export function VerifyEmail(){
     async function blockScreen() {
         return new Promise((resolve) => {
             const hasVisited = localStorage.getItem('hasVisited')
-            console.log(hasVisited)
+            console.log
             if(hasVisited !== 'true'){
-              setTimeout(() => {
                 window.location.href = '/login'
-              }, 1000)
               return
             }
+            setTimeout(() => {
+                window.location.href = '/login'
+              }, 1000)
             return resolve(true)
         })
         
