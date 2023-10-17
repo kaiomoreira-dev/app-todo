@@ -21,18 +21,17 @@ export default function App() {
         const isValidRefreshToken = await verifyRefreshToken()
         setIsValidRefreshToken(isValidRefreshToken)
       }
-      function blockScreen() {
-        console.log(block)
-        if(block) {
+      async function blockScreen() {
+        const hasVisited = localStorage.getItem('hasVisited')
+
+        if(!hasVisited){
+          setBlock(true)
           return
         }
-        setTimeout(() => {
-          setBlock(true)
-        }, 10000);
       }
       checkToken()
       blockScreen()
-  }, [])
+  })
   return (
     <>
       <BrowserRouter>
