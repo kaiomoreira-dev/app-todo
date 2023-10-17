@@ -46,6 +46,9 @@ export function Register(){
                     'Content-Type': 'application/json'
                 }
             })
+
+            if(!responseRegisterUser.ok) throw new Error()
+
             setRegisterUser({
                 firstname: '',
                 lastname: '',
