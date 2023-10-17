@@ -17,6 +17,7 @@ export function VerifyEmail(){
        try {
             const hasVisited = localStorage.getItem('hasVisited')
             if(hasVisited === 'true'){
+                console.log('hasVisited')
                 window.location.href = '/login'
                 return
             }
