@@ -26,6 +26,7 @@ export function VerifyEmail(){
             });
 
             const data = await response.json();
+            console.log(data)
             console.log(response.status)
 
             async function redirect(){
