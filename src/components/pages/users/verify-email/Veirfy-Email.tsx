@@ -4,8 +4,29 @@ import styles from './Verify-Email.module.css';
 import verificationImg from '../../../../assets/verification.png';
 import rocketImg from '../../../../assets/rocket.svg';
 import todoImg from '../../../../assets/todo.svg';
+import { useLocation } from 'react-router';
 
 export function VerifyEmail(){
+    const { search } = useLocation();
+
+    const params = new URLSearchParams(search);
+    const token = params.get('token');  
+    console.log(token);
+
+    // async function verifyEmail(){
+    //     const passowrd = ''
+    //     const response = await fetch(`http://localhost:3000/api/users/verify-email?token=${token}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({ passowrd }),
+    //     });
+
+    //     const data = await response.json();
+    //     console.log(data);
+    // }
+
     return(
         <div className={styles.container}>
             <Header />
