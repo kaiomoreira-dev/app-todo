@@ -28,7 +28,6 @@ export default function App() {
           return
         }else{
           setBlock(true)
-          window.location.href = '/login'
         }
       }
       checkToken()
