@@ -53,14 +53,13 @@ export function Register(){
                 password: '',
                 confirmPassword: ''
             })
-            const data = await responseRegisterUser.json()
-            console.log(data)
+            await responseRegisterUser.json()
 
             //[] redirecionar para a página de login
             window.location.href = '/login'
 
         } catch (error) {
-            console.log(error)
+            alert('Email já cadastrado')
         }
     }
 

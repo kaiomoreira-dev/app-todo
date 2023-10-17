@@ -44,7 +44,7 @@ export function Login(){
             //[x] redirecionar para a página de tarefas
             window.location.href = '/'
         } catch (error) {
-            console.log(error)
+            alert('Senha ou e-mail incorretos')
         }
     }
 
