@@ -15,32 +15,29 @@ export function VerifyEmail(){
 
     async function verifyEmail(){
        try {
+            const hasVisited = localStorage.getItem('hasVisited')
+            if(hasVisited === 'true'){
+                window.location.href = '/login'
+                return
+            }
+            
             const response = await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-            
-            if(response.ok){
-                const firstVisitTimestamp = localStorage.get('firtVisitTimestamp');
 
-                if(!firstVisitTimestamp){
-                    localStorage.setItem('firstVisitTimestamp', Date.now() as unknown as string);
-                }else{
-                    const currentTime = Date.now();
-                    const oneMinute = 60 * 1000;
+            if(!response.ok) throw new Error('Erro ao verificar e-mail')
 
-                    if (currentTime - parseInt(firstVisitTimestamp, 10) > oneMinute) {
-                        window.location.href = '/login';
-                    } else {
-                        localStorage.setItem('visitedVerifyEmailPage', 'true');
-                    }
-                }
-            }
+            localStorage.setItem('hasVisited', 'true')
+
+            setTimeout(()=>{
+                window.location.href = '/login'
+            }, 10000)
+
        } catch (error) {
-            window.location.href = '/login';
-            console.log(error)
+        console.log(error)
        }
     }
     verifyEmail()
