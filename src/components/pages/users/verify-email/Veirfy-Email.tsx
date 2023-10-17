@@ -24,7 +24,7 @@ export function VerifyEmail(){
                 },
                 body: JSON.stringify({})
             });
-
+            
             await response.json();
             localStorage.setItem('hasVisited', 'true')
             async function redirect(){
