@@ -41,8 +41,9 @@ export function VerifyEmail(){
                 return new Promise((resolve) => {
                     setTimeout(()=>{
                     window.location.href = '/login'
+                    resolve(true)
+
                 }, 20000)
-                resolve(true)
                 } )
             }
             login()
