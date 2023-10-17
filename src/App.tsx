@@ -7,6 +7,7 @@ import { Login } from './components/pages/users/login/Login';
 import { verifyRefreshToken } from './utils/verify-refresh-token';
 import { useEffect, useState } from 'react';
 import { VerifyEmail } from './components/pages/users/verify-email/Veirfy-Email';
+import { ForgotPassword } from './components/pages/users/forgot-password/Forgot-Password';
 
 export default function App() {
   const [isValidRefreshToken, setIsValidRefreshToken] = useState<boolean>(false)
@@ -36,6 +37,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={isValidRefreshToken ? <Create /> : <Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/verify-email" element={block ? <Login /> : <VerifyEmail />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />

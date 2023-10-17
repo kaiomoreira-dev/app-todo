@@ -72,10 +72,12 @@ export function Login(){
                         <span className={styles.title}><p>Conectar-se</p></span>
 
                         <label htmlFor="email">E-mail</label>
-                        <input type="text" value={loginUser.email} onChange={handleOnChange} name="email" id="email" required placeholder='example@email.com' />
+                        <input id={styles['space-down']}type="text" value={loginUser.email} onChange={handleOnChange} name="email" required placeholder='example@email.com' />
                     
                         <label htmlFor="password">Senha</label>
-                        <input type="password" value={loginUser.password} onChange={handleOnChange} name="password" id="password" required placeholder='Digite sua senha' />
+                        <input type="password" value={loginUser.password} onChange={handleOnChange} name="password" required placeholder='Digite sua senha' />
+                        <a href="/forgot-password">Esqueceu a senha?</a>
+
                     </fieldset>
                     <footer className={styles.footer}>
                     <button type='submit'>Entrar</button>

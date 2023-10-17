@@ -85,7 +85,7 @@ body{
 }
 
 .footer span:last-child p {
-    color: var(--purple-dark);
+    color: var(--purple-light);
     font-weight: bold;
     margin-right: 0.3rem;
 }
