@@ -72,7 +72,6 @@ export function Register(){
                     window.location.href = '/login';
                 }
             })
-            setMessage(false)
 
         } catch (error) {
             alert('Email já cadastrado')
@@ -82,6 +81,7 @@ export function Register(){
     async function redirect(){
         return new Promise((resolve) => {
             setTimeout(()=>{
+            setMessage(false)
             resolve(true)
             }, 5000)
         })
