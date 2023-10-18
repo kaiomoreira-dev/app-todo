@@ -37,6 +37,14 @@ export function VerifyEmail(){
                 },
                 body: JSON.stringify({})
             });
+
+            async function redirect(){
+                    return new Promise((resolve) => {
+                        setTimeout(()=>{
+                        resolve(true)
+                    }, 10000)
+                })
+            }
            
             redirect().then((result)=>{
                 if (result) {
@@ -48,13 +56,7 @@ export function VerifyEmail(){
         console.log(error)
        }
     }
-    async function redirect(){
-        return new Promise((resolve) => {
-            setTimeout(()=>{
-            resolve(true)
-        }, 5000)
-        } )
-    }
+    
     verifyEmail()
     return(
         <div className={block ? styles.container : styles.none}>
