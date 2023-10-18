@@ -7,8 +7,7 @@ import verificationImg from '../../../../assets/verification.png';
 import rocketImg from '../../../../assets/rocket.svg';
 import todoImg from '../../../../assets/todo.svg';
 import { useLocation } from 'react-router';
-import { useEffect, useState } from 'react';
-import { verifyEmailConfirm } from '../../../../utils/verify-email-confirm';
+import { useState } from 'react';
 
 export function VerifyEmail(){
     const [block, setBlock] = useState<boolean>(false)
