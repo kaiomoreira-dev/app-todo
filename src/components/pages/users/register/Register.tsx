@@ -3,6 +3,9 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import {Header} from '../../../header/Header'
 import styles from './Register.module.css'
 import { Footer } from '../../../footer/Footer'
+import rocketImg from '../../../../assets/rocket.svg'
+import todoImg from '../../../../assets/todo.svg'
+import sendEmailImg from '../../../../assets/send-email.png'
 
 export interface IUser{
     firstname?: string,
@@ -21,6 +24,8 @@ export function Register(){
         password: '',
         confirmPassword: ''
     } as IUser)
+
+    const [message, setMessage] = useState<boolean>(false)
      
     //[x] criar metodo para enviar as informações para a API do backend
     async function handleRegisterUser(event: FormEvent<HTMLFormElement>){
@@ -59,12 +64,29 @@ export function Register(){
             await responseRegisterUser.json()
 
             //[] redirecionar para a página de login
-            window.location.href = '/login'
+            setMessage(true)
+            window.scrollTo(0, 0);
+
+            redirect().then((result)=>{
+                if (result) {
+                    window.location.href = '/login';
+                    setMessage(false)
+                }
+            })
 
         } catch (error) {
             alert('Email já cadastrado')
         }
     }
+
+    async function redirect(){
+        return new Promise((resolve) => {
+            setTimeout(()=>{
+            resolve(true)
+            }, 15000)
+        })
+    }
+    
 
     //[x] criar metodo para receber os dados do formulário
     function handleOnChange(event: ChangeEvent<HTMLInputElement>){
@@ -80,8 +102,24 @@ export function Register(){
         <div className={styles.container}>
             <Header/>
             <main>
+                <div className={message ? styles['confirm-email']: styles.none}>
+                    <img src={sendEmailImg} alt="" />
+
+                    <span>Confirmação Enviada com Sucesso!</span>
+                    <p>
+                        A confirmação foi enviada para o seu e-mail. Por favor, verifique sua caixa de entrada e clique no link de confirmação para ativar sua conta.
+                    </p>
+                    <p>
+                        Se você não receber o e-mail dentro de alguns minutos, verifique sua pasta de spam ou entre em contato conosco para obter ajuda.
+                    </p>
+                </div>
+                <span className={message ? styles.icon : styles.none}>
+                    Equipe
+                    <img src={rocketImg} alt="" />
+                    <img src={todoImg} alt="" />
+                </span>
                 <form 
-                className={styles.form} 
+                className={message ? styles.none : styles.form} 
                 id="register-account" 
                 onSubmit={handleRegisterUser}
                 >
