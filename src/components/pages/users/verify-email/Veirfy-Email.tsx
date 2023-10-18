@@ -9,6 +9,7 @@ import todoImg from '../../../../assets/todo.svg';
 import { useLocation } from 'react-router';
 import { useState } from 'react';
 import { verifyEmailConfirm } from '../../../../utils/verify-email-confirm';
+import { redirect } from '../../../../utils/redirect-to-login';
 
 export function VerifyEmail(){
     const [block, setBlock] = useState<boolean>(false)
@@ -40,24 +41,15 @@ export function VerifyEmail(){
             });
             setBlock(true)
 
-            redirect().then((result)=>{
-                if (result) {
-                    window.location.href = '/login';
-                }
-            })
+            await redirect()
+            window.location.href = '/login';
+
        } catch (error) {
         console.log(error)
        }
     }
     verifyEmail()
 
-    async function redirect(){
-        return new Promise((resolve) => {
-            setTimeout(()=>{
-            resolve(true)
-        }, 5000)
-    })
-}
     return(
         <div className={block ? styles.container : styles.none}>
             <Header />
