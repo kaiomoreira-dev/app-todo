@@ -19,8 +19,6 @@ export function VerifyEmail(){
     const email = params.get('email') as string;
     const token = params.get('token');  
 
-   
-
     async function verifyEmail(){
        try {
             const isEmailConfirmed = await verifyEmailConfirm(email)
@@ -29,7 +27,6 @@ export function VerifyEmail(){
                 window.location.href = '/login';
             }
 
-            setBlock(true)
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
@@ -37,6 +34,7 @@ export function VerifyEmail(){
                 },
                 body: JSON.stringify({})
             });
+            setBlock(true)
 
             async function redirect(){
                     return new Promise((resolve) => {
