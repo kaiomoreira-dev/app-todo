@@ -37,14 +37,13 @@ export function VerifyEmail(){
                 },
                 body: JSON.stringify({})
             });
-
            
             redirect().then((result)=>{
                 if (result) {
+                    setBlock(false)
                     window.location.href = '/login';
                 }
             })
-            setBlock(false)
        } catch (error) {
         console.log(error)
        }
