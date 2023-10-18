@@ -31,7 +31,6 @@ export function Register(){
     async function handleRegisterUser(event: FormEvent<HTMLFormElement>){
         try {
             event.preventDefault();
-            setMessage(true)
         
             if(registerUser.password !== registerUser.confirmPassword){
                 alert('As senhas não conferem')
@@ -64,6 +63,7 @@ export function Register(){
             })
             await responseRegisterUser.json()
 
+            setMessage(true)
             //[] redirecionar para a página de login
             window.scrollTo(0, 0);
 

@@ -24,7 +24,9 @@ export function VerifyEmail(){
             const isEmailConfirmed = await verifyEmailConfirm(email)
             console.log(isEmailConfirmed)
             if(isEmailConfirmed){
+                console.log(isEmailConfirmed)
                 window.location.href = '/login';
+                return
             }
 
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
@@ -39,16 +41,17 @@ export function VerifyEmail(){
             async function redirect(){
                 return new Promise((resolve) => {
                     setTimeout(()=>{
-                    window.location.href = '/login';
                     resolve(true)
-                }, 5000)
-            })
-        }   
-            redirect().then((resolve) => {
-                return resolve
-            }).catch((error) => {
-                console.log(error)
-            })
+                    }, 5000)
+                })
+            }
+           
+        redirect().then((result)=>{
+            if (result) {
+                window.location.href = '/login';
+            }
+        })
+
 
        } catch (error) {
         console.log(error)
