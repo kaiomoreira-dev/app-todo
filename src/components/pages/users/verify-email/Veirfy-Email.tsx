@@ -39,7 +39,7 @@ export function VerifyEmail(){
             async function redirect(){
                 return new Promise((resolve) => {
                     setTimeout(()=>{
-                    console.log('redirecionando')
+                    window.location.href = '/login';
                     resolve(true)
                 }, 5000)
             })
