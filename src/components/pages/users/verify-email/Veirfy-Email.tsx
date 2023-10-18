@@ -20,8 +20,6 @@ export function VerifyEmail(){
     const email = params.get('email') as string;
     const token = params.get('token');  
 
-    
-
     async function verifyEmail(){
        try {
             setBlock(false)
@@ -41,8 +39,15 @@ export function VerifyEmail(){
             });
             setBlock(true)
 
+            async function redirect(){
+                return new Promise((resolve) => {
+                    setTimeout(()=>{
+                    window.location.href = '/login';
+                    resolve(true)
+                }, 5000)
+            })
+        }   
             await redirect()
-            window.location.href = '/login';
 
        } catch (error) {
         console.log(error)
