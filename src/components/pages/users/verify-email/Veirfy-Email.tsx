@@ -29,6 +29,7 @@ export function VerifyEmail(){
                 arrayEmails = JSON.parse(emails);
 
                 if(arrayEmails.includes(email)){
+                    console.log('redirect1')
                     window.location.href = '/login';
                 }
             }
@@ -56,7 +57,7 @@ export function VerifyEmail(){
            
         redirect().then((result)=>{
             if (result) {
-                window.location.href = '/login';
+                console.log('redirect2')
             }
         })
 
