@@ -8,6 +8,13 @@ body{
     align-items: center;
     flex-direction: column;
 }
+.container main{
+    min-height: 100vh ;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 3rem;
+}
 
 .form{
     box-shadow: 0 0 2rem black;
@@ -19,9 +26,7 @@ body{
     justify-content: center;
     align-items: center;   
     flex-direction: column;
-    margin-bottom: 15rem;
-    margin-top: 3rem;
-
+    margin-top: 2rem;
 }
 
 .fieldset label{

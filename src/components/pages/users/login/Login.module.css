@@ -12,17 +12,16 @@ body{
     height: 100vh;
     display: flex;
     justify-content: center;
-    margin: 5rem 0;
+    margin-top: 2rem;
 }
 
 .form{
     box-shadow: 0 0 2rem black;
-    height: 35rem;
-    width: 35rem;
-    padding: 0.5rem 0.5rem 3.5rem 0.5rem;
+    height: 35.5rem;
+    width: 30rem;
+    padding: 1.8rem 0.5rem 3.5rem 0.5rem;
     box-sizing: border-box;
     display: flex;
-    justify-content: center;
     align-items: center;   
     flex-direction: column;
 }
@@ -40,7 +39,7 @@ body{
 .title{
     font-size: 2rem;
     color: var(--gray-100);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     display: flex;
     justify-content: center;
 }
@@ -51,10 +50,10 @@ body{
 
 .fieldset > input{
     border: 1px solid var(--gray-300);
-    height: 3.5rem;
+    height: 4rem;
     /* margin-bottom: 1.3rem; */
     border-radius: 0.3rem;
-    padding: 0.5rem;
+    padding: 1rem;
     font-size: 1rem;
 }
 
@@ -67,13 +66,14 @@ body{
 }
 
 .fieldset a{
+    border-radius: 0.3rem;
+    width: 7.8rem;
     text-decoration: none;
     color: var(--purple-light);
     font-weight: bold;
     font-size: 0.8rem;
     margin-top: 0.3rem;
     margin-left: 0.1rem;
-
 }
 
 .fieldset a:hover{
@@ -82,7 +82,7 @@ body{
 
 .footer{
     font-size: 0.8rem;
-    margin-top: 2.5rem;
+    margin-top: 4.5rem;
 }
 
 .footer button {

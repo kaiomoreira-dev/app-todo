@@ -79,39 +79,41 @@ export function Register(){
     return(
         <div className={styles.container}>
             <Header/>
-            <form 
-            className={styles.form} 
-            id="register-account" 
-            onSubmit={handleRegisterUser}
-            >
-                <fieldset className={styles.fieldset} form='register-account' name='group-register'>
-                    <span className={styles.title}><p>Cadastrar</p></span>
+            <main>
+                <form 
+                className={styles.form} 
+                id="register-account" 
+                onSubmit={handleRegisterUser}
+                >
+                    <fieldset className={styles.fieldset} form='register-account' name='group-register'>
+                        <span className={styles.title}><p>Cadastrar</p></span>
 
-                    <label htmlFor="firstname">Nome</label>
-                    <input type="text" value={registerUser.firstname} onChange={handleOnChange} name="firstname" id="firstname" required placeholder='Digite seu nome' />
-                
-                    <label htmlFor="lastname">Sobrenome</label>
-                    <input type="text" value={registerUser.lastname} onChange={handleOnChange} name="lastname" id="lastname" required placeholder='Digite seu sobrenome' />
-                
-                    <label htmlFor="email">E-mail</label>
-                    <input type="text" value={registerUser.email} onChange={handleOnChange} name="email" id="email" required placeholder='example@email.com' />
-                
-                    <label htmlFor="password">Senha</label>
-                    <input type="password" value={registerUser.password} onChange={handleOnChange} name="password" id="password" required placeholder='Digite sua senha' />
+                        <label htmlFor="firstname">Nome</label>
+                        <input type="text" value={registerUser.firstname} onChange={handleOnChange} name="firstname" id="firstname" required placeholder='Digite seu nome' />
+                    
+                        <label htmlFor="lastname">Sobrenome</label>
+                        <input type="text" value={registerUser.lastname} onChange={handleOnChange} name="lastname" id="lastname" required placeholder='Digite seu sobrenome' />
+                    
+                        <label htmlFor="email">E-mail</label>
+                        <input type="text" value={registerUser.email} onChange={handleOnChange} name="email" id="email" required placeholder='example@email.com' />
+                    
+                        <label htmlFor="password">Senha</label>
+                        <input type="password" value={registerUser.password} onChange={handleOnChange} name="password" id="password" required placeholder='Digite sua senha' />
 
-                    <label htmlFor="confirmPassword">Confirmar senha</label>
-                    <input type="password" value={registerUser.confirmPassword} pattern={registerUser.password} title='A senha e a confirmação de senha não coincidem. Por favor, tente novamente' onChange={handleOnChange} name="confirmPassword" id="confirmPassword" required placeholder='Confirme sua senha' />
-                </fieldset>
-                <footer className={styles.footer}>
-                <button type='submit'>Cadastrar</button>
-                    <span>
-                        <p>
-                            Já tem cadastro?
-                        </p>
-                        <a href="/login">fazer login</a>
-                    </span>
-                </footer>
-            </form>
+                        <label htmlFor="confirmPassword">Confirmar senha</label>
+                        <input type="password" value={registerUser.confirmPassword} pattern={registerUser.password} title='A senha e a confirmação de senha não coincidem. Por favor, tente novamente' onChange={handleOnChange} name="confirmPassword" id="confirmPassword" required placeholder='Confirme sua senha' />
+                    </fieldset>
+                    <footer className={styles.footer}>
+                    <button type='submit'>Cadastrar</button>
+                        <span>
+                            <p>
+                                Já tem cadastro?
+                            </p>
+                            <a href="/login">fazer login</a>
+                        </span>
+                    </footer>
+                </form>
+            </main>
             <Footer />
         </div>
     )
