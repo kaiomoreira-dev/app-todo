@@ -22,6 +22,10 @@ body{
     height: 4rem;
 }
 
+.none{
+    display: none;
+}
+
 .verification-content strong{
     font-size: 2rem;
     margin-bottom: 2rem;

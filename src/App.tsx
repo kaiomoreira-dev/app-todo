@@ -11,7 +11,6 @@ import { ForgotPassword } from './components/pages/users/forgot-password/Forgot-
 
 export default function App() {
   const [isValidRefreshToken, setIsValidRefreshToken] = useState<boolean>(false)
-  const [block, setBlock] = useState<boolean>(false)
 
   useEffect(()=>{
       async function checkToken() {
@@ -22,16 +21,8 @@ export default function App() {
         const isValidRefreshToken = await verifyRefreshToken()
         setIsValidRefreshToken(isValidRefreshToken)
       }
-      async function blockScreen() {
-        const emails = JSON.parse(localStorage.getItem('emails') as string)
-
-        console.log(emails)
-
-        setBlock(false)
-
-      }
       checkToken()
-      blockScreen()
+      
   })
   return (
     <>
@@ -39,7 +30,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={isValidRefreshToken ? <Create /> : <Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/verify-email" element={block ? <Login /> : <VerifyEmail />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>

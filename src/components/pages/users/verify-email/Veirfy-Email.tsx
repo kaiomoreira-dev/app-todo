@@ -7,8 +7,11 @@ import verificationImg from '../../../../assets/verification.png';
 import rocketImg from '../../../../assets/rocket.svg';
 import todoImg from '../../../../assets/todo.svg';
 import { useLocation } from 'react-router';
+import { useState } from 'react';
 
 export function VerifyEmail(){
+    const [block, setBlock] = useState<boolean>(false)
+    
     const { search } = useLocation();
 
     const params = new URLSearchParams(search);
@@ -19,12 +22,18 @@ export function VerifyEmail(){
 
     async function verifyEmail(){
        try {
-            const hasVisited = localStorage.getItem('hasVisited')
-            if(hasVisited === 'true'){
-                window.location.href = '/login';
-                return
+            let arrayEmails = [];
+
+            const emails = localStorage.getItem('emails')
+
+            if(emails){
+                arrayEmails = JSON.parse(emails)
+
+                if(arrayEmails.includes(email)){
+                    window.location.href = '/login';
+                }
             }
-        
+            setBlock(true)
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
@@ -33,14 +42,6 @@ export function VerifyEmail(){
                 body: JSON.stringify({})
             });
 
-            let arrayEmails = [];
-
-            const emails = localStorage.getItem('emails')
-
-            if(emails){
-                arrayEmails = JSON.parse(emails)
-            }
-           
             arrayEmails.push(email)
 
             localStorage.setItem('emails', JSON.stringify(arrayEmails))
@@ -54,6 +55,7 @@ export function VerifyEmail(){
             }
             redirect().then((result)=>{
                 if (result) {
+                    setBlock(false)
                     window.location.href = '/login';
                 }
             })
@@ -63,7 +65,7 @@ export function VerifyEmail(){
     }
     verifyEmail()
     return(
-        <div className={styles.container}>
+        <div className={block ? styles.container : styles.none}>
             <Header />
             <div className={styles['verification-content']}>
                 <img src={verificationImg} alt="" />
