@@ -26,7 +26,7 @@ export function VerifyEmail(){
             let arrayEmails = [];
 
             if(emails?.includes(email)){
-                window.location.href = '/login';
+                console.log(emails)
             }
 
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
