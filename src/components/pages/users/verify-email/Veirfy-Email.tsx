@@ -58,7 +58,6 @@ export function VerifyEmail(){
         redirect().then((result)=>{
             if (result) {
                 console.log('redirect')
-                window.location.href = '/login';
             }
         })
 
