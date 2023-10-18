@@ -7,7 +7,7 @@ import verificationImg from '../../../../assets/verification.png';
 import rocketImg from '../../../../assets/rocket.svg';
 import todoImg from '../../../../assets/todo.svg';
 import { useLocation } from 'react-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { verifyEmailConfirm } from '../../../../utils/verify-email-confirm';
 
 export function VerifyEmail(){
@@ -21,14 +21,6 @@ export function VerifyEmail(){
 
     async function verifyEmail(){
        try {
-            const isEmailConfirmed = await verifyEmailConfirm(email)
-            console.log(isEmailConfirmed)
-            if(isEmailConfirmed){
-                console.log(isEmailConfirmed)
-                window.location.href = '/login';
-                return
-            }
-
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
@@ -58,6 +50,19 @@ export function VerifyEmail(){
        }
     }
     verifyEmail()
+
+    useEffect(()=>{
+        async function checkEmailVerified() {
+            const isEmailConfirmed = await verifyEmailConfirm(email)
+            console.log(isEmailConfirmed)
+            if(isEmailConfirmed){
+                console.log(isEmailConfirmed)
+                window.location.href = '/login';
+            }
+        }
+
+        checkEmailVerified()
+    })
 
     return(
         <div className={block ? styles.container : styles.none}>
