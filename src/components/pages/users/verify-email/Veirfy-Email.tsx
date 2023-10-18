@@ -43,8 +43,8 @@ export function VerifyEmail(){
                 return new Promise((resolve) => {
                     setTimeout(()=>{
                     window.location.href = '/login';
-                    resolve(true)
                 }, 5000)
+                resolve(true)
             })
         }   
             await redirect()
