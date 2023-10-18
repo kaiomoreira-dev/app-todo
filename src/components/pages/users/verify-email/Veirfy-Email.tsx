@@ -15,13 +15,7 @@ export function VerifyEmail(){
     const email = params.get('email');
     const token = params.get('token');  
 
-    async function redirect(){
-        return new Promise((resolve) => {
-            setTimeout(()=>{
-            resolve(true)
-        }, 5000)
-        } )
-    }
+   
 
     async function verifyEmail(){
        try {
@@ -39,16 +33,25 @@ export function VerifyEmail(){
                 body: JSON.stringify({})
             });
 
-            const emails = JSON.parse(localStorage.getItem('emails') as string)
-            
             let arrayEmails = [];
-            arrayEmails = emails
 
+            const emails = localStorage.getItem('emails')
 
+            if(emails){
+                arrayEmails = JSON.parse(emails)
+            }
+           
             arrayEmails.push(email)
 
             localStorage.setItem('emails', JSON.stringify(arrayEmails))
-           
+
+            async function redirect(){
+                return new Promise((resolve) => {
+                    setTimeout(()=>{
+                    resolve(true)
+                }, 5000)
+                } )
+            }
             redirect().then((result)=>{
                 if (result) {
                     window.location.href = '/login';
