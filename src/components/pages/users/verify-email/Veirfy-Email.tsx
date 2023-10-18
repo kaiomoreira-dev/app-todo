@@ -44,7 +44,11 @@ export function VerifyEmail(){
                 resolve(true)
             })
         }   
-            await redirect()
+            redirect().then((resolve) => {
+                return resolve
+            }).catch((error) => {
+                console.log(error)
+            })
 
        } catch (error) {
         console.log(error)
