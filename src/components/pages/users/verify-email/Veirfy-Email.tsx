@@ -39,8 +39,9 @@ export function VerifyEmail(){
             async function redirect(){
                 return new Promise((resolve) => {
                     setTimeout(()=>{
+                    console.log('redirecionando')
+                    resolve(true)
                 }, 5000)
-                resolve(true)
             })
         }   
             redirect().then((resolve) => {
