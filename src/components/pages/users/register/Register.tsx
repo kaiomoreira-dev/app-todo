@@ -83,7 +83,7 @@ export function Register(){
         return new Promise((resolve) => {
             setTimeout(()=>{
             resolve(true)
-            }, 15000)
+            }, 5000)
         })
     }
     
