@@ -17,13 +17,14 @@ body{
 
 .form{
     box-shadow: 0 0 2rem black;
-    height: 35.5rem;
+    height: 33rem;
     width: 30rem;
-    padding: 1.8rem 0.5rem 3.5rem 0.5rem;
+    padding: 0rem 0.5rem 0rem 0.5rem;
     box-sizing: border-box;
     display: flex;
     align-items: center;   
     flex-direction: column;
+    
 }
 
 .fieldset{
