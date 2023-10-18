@@ -70,9 +70,9 @@ export function Register(){
             redirect().then((result)=>{
                 if (result) {
                     window.location.href = '/login';
-                    setMessage(false)
                 }
             })
+            setMessage(false)
 
         } catch (error) {
             alert('Email já cadastrado')
