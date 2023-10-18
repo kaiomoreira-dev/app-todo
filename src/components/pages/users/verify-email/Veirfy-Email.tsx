@@ -41,10 +41,10 @@ export function VerifyEmail(){
            
             redirect().then((result)=>{
                 if (result) {
-                    setBlock(false)
                     window.location.href = '/login';
                 }
             })
+            setBlock(false)
        } catch (error) {
         console.log(error)
        }
