@@ -9,7 +9,6 @@ import todoImg from '../../../../assets/todo.svg';
 import { useLocation } from 'react-router';
 import { useState } from 'react';
 import { verifyEmailConfirm } from '../../../../utils/verify-email-confirm';
-import { redirect } from '../../../../utils/redirect-to-login';
 
 export function VerifyEmail(){
     const [block, setBlock] = useState<boolean>(false)
