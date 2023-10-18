@@ -23,11 +23,12 @@ export default function App() {
         setIsValidRefreshToken(isValidRefreshToken)
       }
       async function blockScreen() {
-        const hasVisited = localStorage.getItem('hasVisited')
-        if(hasVisited === 'true'){
-          setBlock(true)
-          return
-        }
+        const emails = JSON.parse(localStorage.getItem('emails') as string)
+
+        console.log(emails)
+
+        setBlock(false)
+
       }
       checkToken()
       blockScreen()

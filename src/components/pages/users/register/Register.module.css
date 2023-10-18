@@ -105,7 +105,7 @@ body{
 
 .fieldset > input{
     border: 1px solid var(--gray-300);
-    height: 3.5rem;
+    height: 4rem;
     margin-bottom: 1.3rem;
     border-radius: 0.3rem;
     padding: 0.5rem;
@@ -125,8 +125,8 @@ body{
     height: 3rem;
     border-radius: 0.3rem;
     border: none;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
     font-size: 1rem;
     font-weight: bold;
 }

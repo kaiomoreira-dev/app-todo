@@ -15,6 +15,14 @@ export function VerifyEmail(){
     const email = params.get('email');
     const token = params.get('token');  
 
+    async function redirect(){
+        return new Promise((resolve) => {
+            setTimeout(()=>{
+            resolve(true)
+        }, 5000)
+        } )
+    }
+
     async function verifyEmail(){
        try {
             const hasVisited = localStorage.getItem('hasVisited')
@@ -23,7 +31,7 @@ export function VerifyEmail(){
                 return
             }
         
-            const response = await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
+            await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -31,15 +39,16 @@ export function VerifyEmail(){
                 body: JSON.stringify({})
             });
 
-            await response.json();
-            localStorage.setItem('hasVisited', 'true')
-            async function redirect(){
-                return new Promise((resolve) => {
-                    setTimeout(()=>{
-                    resolve(true)
-                }, 5000)
-                } )
-            }
+            const emails = JSON.parse(localStorage.getItem('emails') as string)
+            
+            let arrayEmails = [];
+            arrayEmails = emails
+
+
+            arrayEmails.push(email)
+
+            localStorage.setItem('emails', JSON.stringify(arrayEmails))
+           
             redirect().then((result)=>{
                 if (result) {
                     window.location.href = '/login';
