@@ -8,6 +8,7 @@ import rocketImg from '../../../../assets/rocket.svg';
 import todoImg from '../../../../assets/todo.svg';
 import { useLocation } from 'react-router';
 import { useState } from 'react';
+import { verifyEmailConfirm } from '../../../../utils/verify-email-confirm';
 
 export function VerifyEmail(){
     const [block, setBlock] = useState<boolean>(false)
@@ -15,24 +16,19 @@ export function VerifyEmail(){
     const { search } = useLocation();
 
     const params = new URLSearchParams(search);
-    const email = params.get('email');
+    const email = params.get('email') as string;
     const token = params.get('token');  
 
    
 
     async function verifyEmail(){
        try {
-            let arrayEmails = [];
+            const isEmailConfirmed = await verifyEmailConfirm(email)
 
-            const emails = localStorage.getItem('emails')
-
-            if(emails){
-                arrayEmails = JSON.parse(emails)
-
-                if(arrayEmails.includes(email)){
-                    window.location.href = '/login';
-                }
+            if(isEmailConfirmed){
+                window.location.href = '/login';
             }
+
             setBlock(true)
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
@@ -41,10 +37,6 @@ export function VerifyEmail(){
                 },
                 body: JSON.stringify({})
             });
-
-            arrayEmails.push(email)
-
-            localStorage.setItem('emails', JSON.stringify(arrayEmails))
 
             async function redirect(){
                 return new Promise((resolve) => {
