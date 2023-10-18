@@ -21,6 +21,14 @@ export function VerifyEmail(){
 
     async function verifyEmail(){
        try {
+
+            const emails = localStorage.getItem('emails');
+            let arrayEmails = [];
+
+            if(emails?.includes(email)){
+                window.location.href = '/login';
+            }
+
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
@@ -37,6 +45,14 @@ export function VerifyEmail(){
                     }, 5000)
                 })
             }
+
+            if(emails){
+                arrayEmails = JSON.parse(emails);
+            }
+
+            arrayEmails.push(email);
+
+            localStorage.setItem('emails', JSON.stringify(arrayEmails));
            
         redirect().then((result)=>{
             if (result) {
@@ -50,19 +66,6 @@ export function VerifyEmail(){
        }
     }
     verifyEmail()
-
-    useEffect(()=>{
-        async function checkEmailVerified() {
-            const isEmailConfirmed = await verifyEmailConfirm(email)
-            console.log(isEmailConfirmed)
-            if(isEmailConfirmed){
-                console.log(isEmailConfirmed)
-                window.location.href = '/login';
-            }
-        }
-
-        checkEmailVerified()
-    })
 
     return(
         <div className={block ? styles.container : styles.none}>
