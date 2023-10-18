@@ -23,6 +23,8 @@ export function VerifyEmail(){
 
     async function verifyEmail(){
        try {
+            setBlock(false)
+
             const isEmailConfirmed = await verifyEmailConfirm(email)
 
             if(isEmailConfirmed){
@@ -41,7 +43,6 @@ export function VerifyEmail(){
             redirect().then((result)=>{
                 if (result) {
                     window.location.href = '/login';
-                    setBlock(false)
                 }
             })
        } catch (error) {
