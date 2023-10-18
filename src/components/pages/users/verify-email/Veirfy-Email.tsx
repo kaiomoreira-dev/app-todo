@@ -25,8 +25,12 @@ export function VerifyEmail(){
             console.log(emails)
             let arrayEmails = [];
 
-            if(emails?.includes(email)){
-                console.log(emails)
+            if(emails){
+                arrayEmails = JSON.parse(emails);
+
+                if(arrayEmails.includes(email)){
+                    window.location.href = '/login';
+                }
             }
 
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
@@ -36,7 +40,6 @@ export function VerifyEmail(){
                 },
                 body: JSON.stringify({})
             });
-            setBlock(true)
 
             async function redirect(){
                 return new Promise((resolve) => {
@@ -45,10 +48,6 @@ export function VerifyEmail(){
                     resolve(true)
                     }, 15000)
                 })
-            }
-
-            if(emails){
-                arrayEmails = JSON.parse(emails);
             }
 
             arrayEmails.push(email);
@@ -61,12 +60,14 @@ export function VerifyEmail(){
             }
         })
 
-
        } catch (error) {
         console.log(error)
        }
     }
-    verifyEmail()
+    if(!block){
+        verifyEmail();
+        setBlock(true)
+    }
 
     return(
         <div className={block ? styles.container : styles.none}>
