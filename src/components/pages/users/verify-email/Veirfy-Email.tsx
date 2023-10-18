@@ -38,13 +38,7 @@ export function VerifyEmail(){
                 body: JSON.stringify({})
             });
 
-            async function redirect(){
-                return new Promise((resolve) => {
-                    setTimeout(()=>{
-                    resolve(true)
-                }, 5000)
-                } )
-            }
+           
             redirect().then((result)=>{
                 if (result) {
                     setBlock(false)
@@ -54,6 +48,13 @@ export function VerifyEmail(){
        } catch (error) {
         console.log(error)
        }
+    }
+    async function redirect(){
+        return new Promise((resolve) => {
+            setTimeout(()=>{
+            resolve(true)
+        }, 5000)
+        } )
     }
     verifyEmail()
     return(
