@@ -70,6 +70,7 @@ export function Register(){
             redirect().then((result)=>{
                 if (result) {
                     window.location.href = '/login';
+                    setMessage(false)
                 }
             })
 
@@ -81,7 +82,6 @@ export function Register(){
     async function redirect(){
         return new Promise((resolve) => {
             setTimeout(()=>{
-            setMessage(false)
             resolve(true)
             }, 5000)
         })
