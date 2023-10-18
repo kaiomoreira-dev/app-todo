@@ -7,7 +7,7 @@ export async function verifyEmailConfirm(email: string) {
     });
 
     const data = responseEmailExist.json() as unknown  as boolean;
-
+    console.log(data)
     if (data) {
         return true
     }

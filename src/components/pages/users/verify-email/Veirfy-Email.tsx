@@ -22,10 +22,10 @@ export function VerifyEmail(){
     async function verifyEmail(){
        try {
             const isEmailConfirmed = await verifyEmailConfirm(email)
-
-            if(isEmailConfirmed){
-                window.location.href = '/login';
-            }
+            console.log(isEmailConfirmed)
+            // if(isEmailConfirmed){
+            //     window.location.href = '/login';
+            // }
 
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
