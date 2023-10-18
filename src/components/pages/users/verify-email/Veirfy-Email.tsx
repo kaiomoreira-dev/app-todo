@@ -22,6 +22,7 @@ export function VerifyEmail(){
        try {
 
             const emails = localStorage.getItem('emails');
+            console.log(emails)
             let arrayEmails = [];
 
             if(emails?.includes(email)){
