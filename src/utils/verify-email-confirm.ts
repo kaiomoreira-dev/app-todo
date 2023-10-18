@@ -8,9 +8,9 @@ export async function verifyEmailConfirm(email: string) {
 
     const data = responseEmailExist.json() as unknown  as boolean;
 
-    if (!data) {
-        return false
+    if (data) {
+        return true
     }
 
-    return true;
+    return false;
 }
