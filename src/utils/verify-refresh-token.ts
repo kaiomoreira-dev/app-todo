@@ -10,7 +10,8 @@ export async function verifyRefreshToken() {
     })
 
     const status = verifyRefreshToken.status;
-    
+    const data = await verifyRefreshToken.json();
+    console.log(data);
     if (status > 200) {
         return false;
     }
