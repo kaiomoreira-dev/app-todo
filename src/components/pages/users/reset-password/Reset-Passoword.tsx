@@ -30,6 +30,8 @@ export function ResetPassword() {
         try {
             event.preventDefault();
             
+            setBlock(false)
+            
             if(resetPassword.password !== resetPassword.confirmPassword){
                 alert('As senhas não conferem')
                 return
@@ -82,7 +84,6 @@ export function ResetPassword() {
             if(tokebResetPassword){
                 navigate('/login')
             }
-            setBlock(false)
         }
         verifyTokenResetPassword()
     })
