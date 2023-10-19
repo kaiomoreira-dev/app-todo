@@ -106,7 +106,7 @@ export function ForgotPassword(){
                         <Link to="/login">
                             <button type='button'>Voltar</button>
                         </Link>
-                        <button type='submit'>Pesquisar</button>
+                        <button type='submit'>Encontrar</button>
                     </footer>
                 </form>
             </main>
