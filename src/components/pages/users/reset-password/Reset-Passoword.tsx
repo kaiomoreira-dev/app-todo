@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Footer } from '../../../footer/Footer';
 import { Header } from '../../../header/Header';
 import styles from './Reset-Password.module.css';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 export interface IUser{
     password: string,
@@ -29,14 +29,7 @@ export function ResetPassword() {
     async function handleResetPassword(event: FormEvent<HTMLFormElement>){
         try {
             event.preventDefault();
-            setBlock(true)
-            const tokebResetPassword = localStorage.getItem('tokenResetPassword')
-            console.log('token', tokebResetPassword)
-            if(tokebResetPassword){
-                console.log('token', tokebResetPassword)
-                navigate('/login')
-            }
-            setBlock(false)
+            
             if(resetPassword.password !== resetPassword.confirmPassword){
                 alert('As senhas não conferem')
                 return
@@ -81,6 +74,18 @@ export function ResetPassword() {
             [name]: value
         })
     }
+
+    useEffect(()=>{
+        async function verifyTokenResetPassword(){
+            setBlock(true)
+            const tokebResetPassword = localStorage.getItem('tokenResetPassword')
+            if(tokebResetPassword){
+                navigate('/login')
+            }
+            setBlock(false)
+        }
+        verifyTokenResetPassword()
+    })
     
 
   return (
