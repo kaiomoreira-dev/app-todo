@@ -3,7 +3,6 @@ import { Footer } from '../../../footer/Footer';
 import { Header } from '../../../header/Header';
 import styles from './Reset-Password.module.css';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { Loader } from '../../../loader/Loader';
 
 export interface IUser{
     password: string,
@@ -30,8 +29,6 @@ export function ResetPassword() {
     async function handleResetPassword(event: FormEvent<HTMLFormElement>){
         try {
             event.preventDefault();
-            
-            setBlock(false)
             
             if(resetPassword.password !== resetPassword.confirmPassword){
                 alert('As senhas não conferem')
@@ -92,7 +89,6 @@ export function ResetPassword() {
 
   return (
     <div className={block ? styles.none : styles.container}>
-        <Loader />
         <Header />
         <main className={styles['main-content']}>
         <form action="" onSubmit={handleResetPassword}>
