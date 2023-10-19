@@ -77,11 +77,11 @@ export function ResetPassword() {
     useEffect(()=>{
         async function verifyTokenResetPassword(){
             const tokebResetPassword = localStorage.getItem('tokenResetPassword')
+            setBlock(true)
             if(tokebResetPassword){
                 navigate('/login')
                 return
             }
-            setBlock(false)
         }
         verifyTokenResetPassword()
     })
