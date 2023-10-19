@@ -24,7 +24,7 @@ export function ForgotPassword(){
     async function handleForgotPassword(event: FormEvent<HTMLFormElement>){
         try {
             event.preventDefault();
-             await fetch(`https://api-todo-oe5w.onrender.com/api/users/forgot-password`,{
+             const responseConfirmEmail = await fetch(`https://api-todo-oe5w.onrender.com/api/users/forgot-password`,{
                 body: JSON.stringify(
                     {
                         email: emailField.email,
@@ -35,6 +35,8 @@ export function ForgotPassword(){
                     'Content-Type': 'application/json'
                 }
             })
+
+            if(!responseConfirmEmail.ok) throw new Error('E-mail não encontrado')
 
             setEmailField({
                 email: '',
