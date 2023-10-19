@@ -22,7 +22,6 @@ export function VerifyEmail(){
        try {
 
             const emails = localStorage.getItem('emails');
-            console.log(emails)
             let arrayEmails = [];
 
             if(emails){
@@ -45,7 +44,7 @@ export function VerifyEmail(){
                 return new Promise((resolve) => {
                     setTimeout(()=>{
                     resolve(true)
-                    }, 15000)
+                    }, 5000)
                 })
             }
 
