@@ -17,7 +17,7 @@ body{
 
 .form{
     box-shadow: 0 0 2rem black;
-    height: 33rem;
+    height: 32rem;
     width: 30rem;
     padding: 0rem 0.5rem 0rem 0.5rem;
     box-sizing: border-box;
@@ -92,7 +92,6 @@ body{
     height: 3rem;
     border-radius: 0.3rem;
     border: none;
-    margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: 1rem;
     font-weight: bold;

@@ -8,6 +8,10 @@ body{
     /* margin-top: 10rem; */
 }
 
+.none{
+    display: none;
+}
+
 .main-content{
     min-height: 100vh;
     z-index: 1;

@@ -1,7 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '../../../header/Header'
 import styles from './Login.module.css'
 import { Footer } from '../../../footer/Footer';
+
+
 
 export interface IUser{
     email: string,
@@ -14,11 +17,12 @@ export function Login(){
         password: '',
     } as IUser)
 
+    const navigate = useNavigate()
+    window.scrollTo(0, 0);
     //[x] criar metodo para enviar as informações de login para a API do backend
     async function handleLoginUser(event: FormEvent<HTMLFormElement>){
         try {
-            event.preventDefault();
-        
+            event.preventDefault();        
             const responseLoginUser = await fetch(`https://api-todo-oe5w.onrender.com/api/users/login`,{
                 body: JSON.stringify(
                     {
@@ -42,12 +46,11 @@ export function Login(){
             localStorage.setItem('refreshToken', data.refreshToken)
             localStorage.setItem('idUser', data.user.id)
             //[x] redirecionar para a página de tarefas
-            window.location.href = '/'
+            navigate("/")
         } catch (error) {
             alert('Senha ou e-mail incorretos')
         }
     }
-
     //[x] criar metodo para receber os dados do formulário
     function handleOnChange(event: ChangeEvent<HTMLInputElement>){
         const {name, value} = event.target
@@ -59,7 +62,6 @@ export function Login(){
     }
 
     return(
-    
     <div className={styles.container}>
             <Header/>
             <div className={styles['form-center']}>
@@ -76,7 +78,7 @@ export function Login(){
                     
                         <label htmlFor="password">Senha</label>
                         <input type="password" value={loginUser.password} onChange={handleOnChange} name="password" required placeholder='Digite sua senha' />
-                        <a href="/forgot-password">Esqueceu a senha?</a>
+                        <Link to="/forgot-password">Esqueceu a senha?</Link>
 
                     </fieldset>
                     <footer className={styles.footer}>
@@ -85,7 +87,7 @@ export function Login(){
                             <p>
                                 Não possui cadastro?
                             </p>
-                            <a href="/register">fazer cadastro</a>
+                            <Link to="/register">fazer cadastro</Link>
                         </span>
                     </footer>
                 </form>

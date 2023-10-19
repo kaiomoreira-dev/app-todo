@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { Footer } from '../../../footer/Footer'
 import { Header } from '../../../header/Header'
 import styles from './Forgot-Password.module.css'
+import { Link } from 'react-router-dom'
 
 interface IEmail{
     email: string,
@@ -61,9 +62,11 @@ export function ForgotPassword(){
                     <input id={styles['space-down']}type="text" value={emailField.email} onChange={handleOnChange}  name="email" placeholder='example@email.com' />
                     </fieldset>
                     <footer>
-                        <a href="/">
-                            <button type='button'>Cancelar</button>
-                        </a>
+                        
+                        <Link to="/login">
+                            <button type='button'>Voltar</button>
+                        </Link>
+                        
                         <button type='submit'>Pesquisar</button>
                     </footer>
                 </form>

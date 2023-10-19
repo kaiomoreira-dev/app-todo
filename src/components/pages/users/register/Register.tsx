@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import {Header} from '../../../header/Header'
 import styles from './Register.module.css'
 import { Footer } from '../../../footer/Footer'
@@ -26,6 +27,8 @@ export function Register(){
     } as IUser)
 
     const [message, setMessage] = useState<boolean>(false)
+
+    const navigate = useNavigate()
      
     //[x] criar metodo para enviar as informações para a API do backend
     async function handleRegisterUser(event: FormEvent<HTMLFormElement>){
@@ -69,7 +72,7 @@ export function Register(){
 
             redirect().then((result)=>{
                 if (result) {
-                    window.location.href = '/login';
+                    navigate('/login')
                 }
             })
 
@@ -146,7 +149,7 @@ export function Register(){
                             <p>
                                 Já tem cadastro?
                             </p>
-                            <a href="/login">fazer login</a>
+                            <Link to="/login">fazer login</Link>
                         </span>
                     </footer>
                 </form>

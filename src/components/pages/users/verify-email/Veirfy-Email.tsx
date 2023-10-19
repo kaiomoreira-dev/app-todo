@@ -6,7 +6,7 @@ import styles from './Verify-Email.module.css';
 import verificationImg from '../../../../assets/verification.png';
 import rocketImg from '../../../../assets/rocket.svg';
 import todoImg from '../../../../assets/todo.svg';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { useState } from 'react';
 
 export function VerifyEmail(){
@@ -14,13 +14,15 @@ export function VerifyEmail(){
     
     const { search } = useLocation();
 
+    const navigate = useNavigate()
+
     const params = new URLSearchParams(search);
     const email = params.get('email') as string;
     const token = params.get('token');  
 
     async function verifyEmail(){
        try {
-
+            setBlock(true);
             const emails = localStorage.getItem('emails');
             let arrayEmails = [];
 
@@ -28,7 +30,7 @@ export function VerifyEmail(){
                 arrayEmails = JSON.parse(emails);
 
                 if(arrayEmails.includes(email)){
-                    window.location.href = '/login';
+                    navigate("/login")
                 }
             }
 
@@ -54,7 +56,7 @@ export function VerifyEmail(){
            
         redirect().then((result)=>{
             if (result) {
-                window.location.href = '/login';
+                navigate("/login")
             }
         })
 

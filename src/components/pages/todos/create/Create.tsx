@@ -11,6 +11,7 @@ import logoutImg from '../../../../assets/logout.png';
 import hamburgerImg from '../../../../assets/hamburger.png';
 import { Loader } from '../../../loader/Loader';
 import { Footer } from '../../../footer/Footer';
+import { useNavigate } from 'react-router';
 
 
 interface ITodo{
@@ -32,6 +33,9 @@ export function Create(){
         description: ''
     } as IDescription)
     
+    const navigate = useNavigate()
+
+    const [block, setBlock] = useState<boolean>(false)
 
     //[x] criar estado para armazenar a lista de tarefas
     const [todos, setTodos] = useState<ITodo[]>([])
@@ -108,14 +112,15 @@ export function Create(){
         })
         localStorage.removeItem('accessToken')
         localStorage.removeItem('refreshToken')
-        window.location.href = '/login'
+        navigate("/login")
     }
 
     useEffect(()=>{
+        setBlock(true)
         async function checkTokenOn(){
         const isValidRefreshToken = await verifyRefreshToken()
             if(!isValidRefreshToken){
-                window.location.href = '/login'
+                navigate("/login")
             }
         }
 
@@ -135,7 +140,7 @@ export function Create(){
                 setTodos(data)
               
            } catch (error) {
-                window.location.href = '/login'
+            navigate("/login")
            }
         }
 
@@ -177,7 +182,7 @@ export function Create(){
 
     
     return(
-        <div className={styles.container}>
+        <div className={block ? styles.container : styles.none}>
             <Header />
             <Loader />
             <div className={styles['main-content']}>
