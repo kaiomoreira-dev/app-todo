@@ -65,7 +65,6 @@ export function ResetPassword() {
             navigate('/login')
             setBlock(true)
 
-
         } catch (error) {
             alert('Erro ao redefinir a senha')
             navigate('/login')
@@ -84,7 +83,7 @@ export function ResetPassword() {
     
 
   return (
-    <div className={block ? styles.container : styles.none}>
+    <div className={block ? styles.none : styles.container}>
         <Header />
         <main className={styles['main-content']}>
         <form action="" onSubmit={handleResetPassword}>
