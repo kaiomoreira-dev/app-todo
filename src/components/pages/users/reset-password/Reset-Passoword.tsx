@@ -31,7 +31,7 @@ export function ResetPassword() {
             event.preventDefault();
             setBlock(true)
             const tokebResetPassword = localStorage.getItem('tokenResetPassword')
-
+            console.log('token', tokebResetPassword)
             if(tokebResetPassword){
                 console.log('token', tokebResetPassword)
                 navigate('/login')
