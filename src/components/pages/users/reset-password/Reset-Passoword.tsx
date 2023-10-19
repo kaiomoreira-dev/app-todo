@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Footer } from '../../../footer/Footer';
 import { Header } from '../../../header/Header';
 import styles from './Reset-Password.module.css';
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 export interface IUser{
     password: string,
@@ -10,7 +10,7 @@ export interface IUser{
 }
 
 export function ResetPassword() {
-    const [block, setBlock] = useState<boolean>(false)
+    // const [block, setBlock] = useState<boolean>(false)
     
     const { search } = useLocation();
 
@@ -76,20 +76,20 @@ export function ResetPassword() {
     }
     
 
-    useEffect(()=>{
-        async function verifyTokenResetPassword(){
-            setBlock(true)
-            const tokebResetPassword = localStorage.getItem('tokenResetPassword')
-            if(tokebResetPassword){
-                navigate('/login')
-            }
-        }
-        verifyTokenResetPassword()
-    })
+    // useEffect(()=>{
+    //     async function verifyTokenResetPassword(){
+    //         setBlock(true)
+    //         const tokebResetPassword = localStorage.getItem('tokenResetPassword')
+    //         if(tokebResetPassword){
+    //             navigate('/login')
+    //         }
+    //     }
+    //     verifyTokenResetPassword()
+    // })
     
 
   return (
-    <div className={block ? styles.container :styles.none }>
+    <div className={styles.container}>
         <Header />
         <main className={styles['main-content']}>
         <form action="" onSubmit={handleResetPassword}>
