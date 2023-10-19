@@ -19,7 +19,7 @@ export function ResetPassword() {
     const params = new URLSearchParams(search);
     const token = params.get('token'); 
     localStorage.setItem('tokenResetPassword', token as string) 
-    setBlock(true)
+
     //[x] criar estado para armazenar os dados do formulário
     const [resetPassword, setResetPassword] = useState<IUser>({
         password: '',
@@ -29,6 +29,7 @@ export function ResetPassword() {
     async function handleResetPassword(event: FormEvent<HTMLFormElement>){
         try {
             event.preventDefault();
+            
             if(resetPassword.password !== resetPassword.confirmPassword){
                 alert('As senhas não conferem')
                 return
@@ -73,21 +74,22 @@ export function ResetPassword() {
             [name]: value
         })
     }
+    
 
     useEffect(()=>{
         async function verifyTokenResetPassword(){
-            const tokebResetPassword = localStorage.getItem('tokenResetPassword')
             setBlock(true)
+            const tokebResetPassword = localStorage.getItem('tokenResetPassword')
             if(tokebResetPassword){
                 navigate('/login')
-                return
             }
         }
         verifyTokenResetPassword()
     })
     
+
   return (
-    <div className={block ? styles.none : styles.container}>
+    <div className={block ? styles.container :styles.none }>
         <Header />
         <main className={styles['main-content']}>
         <form action="" onSubmit={handleResetPassword}>
