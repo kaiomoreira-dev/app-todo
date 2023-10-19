@@ -35,7 +35,7 @@ export function ForgotPassword(){
                     'Content-Type': 'application/json'
                 }
             })
-
+            await responseConfirmEmail.json()
             if(!responseConfirmEmail.ok) throw new Error('E-mail não encontrado')
 
             setEmailField({
