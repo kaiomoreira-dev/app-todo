@@ -35,7 +35,6 @@ export function ResetPassword() {
             if(tokebResetPassword){
                 navigate('/login')
             }
-            setBlock(true)
             if(resetPassword.password !== resetPassword.confirmPassword){
                 alert('As senhas não conferem')
                 return
@@ -64,6 +63,8 @@ export function ResetPassword() {
 
             //[x] redirecionar para a página de login
             navigate('/login')
+            setBlock(true)
+
 
         } catch (error) {
             alert('Erro ao redefinir a senha')
