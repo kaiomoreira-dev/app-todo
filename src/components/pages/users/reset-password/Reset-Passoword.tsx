@@ -10,7 +10,7 @@ export interface IUser{
 }
 
 export function ResetPassword() {
-    const [block, setBlock] = useState<boolean>(false)
+    const [block, setBlock] = useState<boolean>(true)
     
     const { search } = useLocation();
 
@@ -29,7 +29,6 @@ export function ResetPassword() {
     async function handleResetPassword(event: FormEvent<HTMLFormElement>){
         try {
             event.preventDefault();
-            
             if(resetPassword.password !== resetPassword.confirmPassword){
                 alert('As senhas não conferem')
                 return
@@ -74,31 +73,18 @@ export function ResetPassword() {
             [name]: value
         })
     }
-    async function redirect(){
-        return new Promise((resolve) => {
-            setTimeout(()=>{
-            resolve(true)
-            }, 5000)
-        })
-    }
 
     useEffect(()=>{
         async function verifyTokenResetPassword(){
-            setBlock(true)
             const tokebResetPassword = localStorage.getItem('tokenResetPassword')
             if(tokebResetPassword){
                 navigate('/login')
             }
-            redirect().then((result)=>{
-                if (result) {
-                    setBlock(false)
-                }
-            })
         }
         verifyTokenResetPassword()
     })
     
-
+    setBlock(false)
   return (
     <div className={block ? styles.none : styles.container}>
         <Header />
