@@ -74,6 +74,13 @@ export function ResetPassword() {
             [name]: value
         })
     }
+    async function redirect(){
+        return new Promise((resolve) => {
+            setTimeout(()=>{
+            resolve(true)
+            }, 5000)
+        })
+    }
 
     useEffect(()=>{
         async function verifyTokenResetPassword(){
@@ -82,6 +89,11 @@ export function ResetPassword() {
             if(tokebResetPassword){
                 navigate('/login')
             }
+            redirect().then((result)=>{
+                if (result) {
+                    setBlock(false)
+                }
+            })
         }
         verifyTokenResetPassword()
     })
