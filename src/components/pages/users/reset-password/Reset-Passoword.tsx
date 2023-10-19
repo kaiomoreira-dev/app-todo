@@ -29,12 +29,14 @@ export function ResetPassword() {
     async function handleResetPassword(event: FormEvent<HTMLFormElement>){
         try {
             event.preventDefault();
-            
+            setBlock(true)
             const tokebResetPassword = localStorage.getItem('tokenResetPassword')
 
             if(tokebResetPassword){
+                console.log('token', tokebResetPassword)
                 navigate('/login')
             }
+            setBlock(false)
             if(resetPassword.password !== resetPassword.confirmPassword){
                 alert('As senhas não conferem')
                 return
@@ -63,7 +65,6 @@ export function ResetPassword() {
 
             //[x] redirecionar para a página de login
             navigate('/login')
-            setBlock(true)
 
         } catch (error) {
             alert('Erro ao redefinir a senha')
