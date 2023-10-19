@@ -74,7 +74,6 @@ export function ResetPassword() {
     }
     async function verifyTokenResetPassword(){
         const tokebResetPassword = localStorage.getItem('tokenResetPassword')
-        setBlock(true)
         if(tokebResetPassword){
             navigate('/login')
             return
