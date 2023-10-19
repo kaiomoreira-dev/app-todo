@@ -10,6 +10,8 @@ export interface IUser{
 }
 
 export function ResetPassword() {
+    const [block, setBlock] = useState<boolean>(false)
+    
     const { search } = useLocation();
 
     const navigate = useNavigate()
@@ -33,7 +35,7 @@ export function ResetPassword() {
             if(tokebResetPassword){
                 navigate('/login')
             }
-        
+            setBlock(true)
             if(resetPassword.password !== resetPassword.confirmPassword){
                 alert('As senhas não conferem')
                 return
@@ -46,7 +48,7 @@ export function ResetPassword() {
                         password: resetPassword.password
                     }
                 ),
-                method: 'POST',
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -64,7 +66,8 @@ export function ResetPassword() {
             navigate('/login')
 
         } catch (error) {
-            alert('Email já cadastrado')
+            alert('Erro ao redefinir a senha')
+            navigate('/login')
         }
     }
 
@@ -80,7 +83,7 @@ export function ResetPassword() {
     
 
   return (
-    <div className={styles.container}>
+    <div className={block ? styles.container : styles.none}>
         <Header />
         <main className={styles['main-content']}>
         <form action="" onSubmit={handleResetPassword}>
