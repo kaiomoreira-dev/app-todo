@@ -119,6 +119,7 @@ export function Create(){
         setBlock(true)
         async function checkTokenOn(){
         const isValidRefreshToken = await verifyRefreshToken()
+        console.log(isValidRefreshToken)
             if(!isValidRefreshToken){
                 navigate("/login")
             }

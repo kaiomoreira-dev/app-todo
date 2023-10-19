@@ -12,11 +12,11 @@ export default function App() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Create />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
         </Routes>
     </BrowserRouter>
     </>
