@@ -64,7 +64,6 @@ export function VerifyEmail(){
     }
     if(!block){
         verifyEmail();
-        setBlock(true)
     }
 
     return(
