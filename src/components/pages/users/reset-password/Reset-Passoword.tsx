@@ -83,6 +83,7 @@ export function ResetPassword() {
         verifyTokenResetPassword().then((response)=>{
             return response
         })
+        console.log(block)
         setBlock(true)
     }
     
