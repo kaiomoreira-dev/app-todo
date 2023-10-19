@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Footer } from '../../../footer/Footer';
 import { Header } from '../../../header/Header';
 import styles from './Reset-Password.module.css';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 export interface IUser{
     password: string,
@@ -19,6 +19,7 @@ export function ResetPassword() {
     const params = new URLSearchParams(search);
     const token = params.get('token'); 
     localStorage.setItem('tokenResetPassword', token as string) 
+    setBlock(true)
     //[x] criar estado para armazenar os dados do formulário
     const [resetPassword, setResetPassword] = useState<IUser>({
         password: '',
@@ -72,23 +73,21 @@ export function ResetPassword() {
             [name]: value
         })
     }
-    async function verifyTokenResetPassword(){
-        const tokebResetPassword = localStorage.getItem('tokenResetPassword')
-        if(tokebResetPassword){
-            navigate('/login')
-            return
+
+    useEffect(()=>{
+        async function verifyTokenResetPassword(){
+            const tokebResetPassword = localStorage.getItem('tokenResetPassword')
+            setBlock(true)
+            if(tokebResetPassword){
+                navigate('/login')
+                return
+            }
         }
-    }
-    if(!block){
-        verifyTokenResetPassword().then((response)=>{
-            return response
-        })
-        console.log(block)
-        setBlock(true)
-    }
+        verifyTokenResetPassword()
+    })
     
   return (
-    <div className={block ? styles.container : styles.none}>
+    <div className={block ? styles.none : styles.container}>
         <Header />
         <main className={styles['main-content']}>
         <form action="" onSubmit={handleResetPassword}>
