@@ -94,7 +94,7 @@ export function ForgotPassword(){
                 <form id={message ? styles.none : ''} action="" onSubmit={handleForgotPassword}>
                     <fieldset>
                     <div className={styles['title-content']}>
-                        <span>Redefinição de senha</span>
+                        <span>Encontre sua conta</span>
                         <p>
                             Para recuperar sua senha, digite seu e-mail abaixo. Que nos enviaremos um link para você acessar e redefinir sua senha.
                         </p>    
