@@ -10,7 +10,7 @@ export interface IUser{
 }
 
 export function ResetPassword() {
-    const [block, setBlock] = useState<boolean>(true)
+    const [block, setBlock] = useState<boolean>(false)
     
     const { search } = useLocation();
 
@@ -79,12 +79,13 @@ export function ResetPassword() {
             const tokebResetPassword = localStorage.getItem('tokenResetPassword')
             if(tokebResetPassword){
                 navigate('/login')
+                return
             }
+            setBlock(false)
         }
         verifyTokenResetPassword()
     })
     
-    setBlock(false)
   return (
     <div className={block ? styles.none : styles.container}>
         <Header />
