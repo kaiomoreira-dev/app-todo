@@ -5,7 +5,7 @@ import { Header } from '../../../header/Header';
 import styles from './Verify-Email.module.css';
 import verificationImg from '../../../../assets/verification.png';
 import { useLocation, useNavigate } from 'react-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function VerifyEmail(){
     const [block, setBlock] = useState<boolean>(false)
@@ -20,18 +20,16 @@ export function VerifyEmail(){
 
     async function verifyEmail(){
        try {
-            setBlock(true);
+        setBlock(false);
             const emails = localStorage.getItem('emails');
             let arrayEmails = [];
 
             if(emails){
                 arrayEmails = JSON.parse(emails);
+                setBlock(true);
 
-                if(arrayEmails.includes(email)){
-                    navigate("/login")
-                }
             }
-            setBlock(false);
+            
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
@@ -44,7 +42,7 @@ export function VerifyEmail(){
                 return new Promise((resolve) => {
                     setTimeout(()=>{
                     resolve(true)
-                    }, 5000)
+                    }, 3000)
                 })
             }
 
@@ -66,23 +64,24 @@ export function VerifyEmail(){
         verifyEmail();
     }
 
-    // function verifyRouter(){
-    //     const emails = localStorage.getItem('emails') as unknown as string[];
+    useEffect(()=>{
+        function verifyRouter(){
+        const emails = localStorage.getItem('emails') as unknown as string[];
         
-    //     // exemplo https://localhost:300/reset-password
-    //     if(!email || !token){
-    //         navigate("/login")
-    //     }
+        // exemplo https://localhost:300/reset-password
+        if(!email || !token){
+            navigate("/login")
+        }
         
-    //     // se email existir no storage ou token não existir
-    //     if(emails.includes(email) || !token){
-    //         navigate("/login")
-    //     }
-    //     verifyEmail();
-    // }
-
+        // se email existir no storage ou token não existir
+        if(emails.includes(email) || !token){
+            navigate("/login")
+        }
+    }
+    verifyRouter();
+    })
     return(
-        <div className={block ? styles.none: styles.container}>
+        <div className={block ? styles.none : styles.container}>
             <Header />
             <div className={styles['verification-content']}>
                 <img src={verificationImg} alt="" />
