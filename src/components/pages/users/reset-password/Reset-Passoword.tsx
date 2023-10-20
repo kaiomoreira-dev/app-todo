@@ -18,7 +18,7 @@ export function ResetPassword() {
 
     const params = new URLSearchParams(search);
     const token = params.get('token'); 
-
+    localStorage.setItem('tokenResetPassword', token as string) 
     
     function blockScree(){
     const tokebResetPassword = localStorage.getItem('tokenResetPassword')
@@ -73,7 +73,7 @@ export function ResetPassword() {
                 confirmPassword: ''
             })
             await responseResetPassword.json()
-            localStorage.setItem('tokenResetPassword', token as string) 
+            
 
             //[x] redirecionar para a página de login
             navigate('/login')
