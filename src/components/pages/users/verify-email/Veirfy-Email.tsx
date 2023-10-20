@@ -6,7 +6,6 @@ import styles from './Verify-Email.module.css';
 import verificationImg from '../../../../assets/verification.png';
 import { useLocation, useNavigate } from 'react-router';
 import { useState } from 'react';
-import { Loader } from '../../../loader/Loader';
 
 export function VerifyEmail(){
     const [block, setBlock] = useState<boolean>(false)
