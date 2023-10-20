@@ -114,11 +114,6 @@ export function Register(){
                     <p>
                         Se você não receber o e-mail dentro de alguns minutos, verifique sua pasta de spam ou entre em contato conosco para obter ajuda.
                     </p>
-                    <span className={message ? styles.icon : styles.none}>
-                    Equipe
-                    <img src={rocketImg} alt="" />
-                    <img src={todoImg} alt="" />
-                </span>
                 </div>
                 
                 <form 

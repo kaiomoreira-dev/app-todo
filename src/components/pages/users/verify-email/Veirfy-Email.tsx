@@ -7,7 +7,7 @@ import verificationImg from '../../../../assets/verification.png';
 import rocketImg from '../../../../assets/rocket.svg';
 import todoImg from '../../../../assets/todo.svg';
 import { useLocation, useNavigate } from 'react-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function VerifyEmail(){
     const [block, setBlock] = useState<boolean>(false)
@@ -23,17 +23,9 @@ export function VerifyEmail(){
     async function verifyEmail(){
        try {
             setBlock(true);
-            const emails = localStorage.getItem('emails');
-            let arrayEmails = [];
-
-            if(emails){
-                arrayEmails = JSON.parse(emails);
-
-                if(arrayEmails.includes(email)){
-                    navigate("/login")
-                }
-            }
-
+          
+            const emails = localStorage.getItem('emails') as unknown as string[];
+           
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
@@ -46,13 +38,13 @@ export function VerifyEmail(){
                 return new Promise((resolve) => {
                     setTimeout(()=>{
                     resolve(true)
-                    }, 5000)
+                    }, 999999)
                 })
             }
 
-            arrayEmails.push(email);
+            emails.push(email);
 
-            localStorage.setItem('emails', JSON.stringify(arrayEmails));
+            localStorage.setItem('emails', JSON.stringify(emails));
            
         redirect().then((result)=>{
             if (result) {
@@ -68,6 +60,25 @@ export function VerifyEmail(){
         verifyEmail();
     }
 
+    useEffect(()=>{
+        function verifyRouter(){
+            const emails = localStorage.getItem('emails') as unknown as string[];
+            console.log(emails)
+
+            if(!email || !token){
+                navigate("/login")
+            }
+        
+            // const JSON.parse(emails);
+            if(email.includes(email) || !token){
+                navigate("/login")
+            }
+        
+        }
+        verifyRouter();
+
+    })
+
     return(
         <div className={block ? styles.container : styles.none}>
             <Header />
@@ -77,11 +88,6 @@ export function VerifyEmail(){
                 <p>
                 Parabéns! Seu e-mail foi verificado com sucesso. Agora você está pronto para aproveitar ao máximo nossa plataforma. Continue explorando e aproveitando todos os recursos que temos a oferecer. 
                 </p>
-                <span className={styles.icon}>
-                 Equipe
-                 <img src={rocketImg} alt="" />
-                 <img src={todoImg} alt="" />
-                </span>
             </div>
             <Footer />
         </div>

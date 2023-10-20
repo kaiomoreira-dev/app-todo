@@ -35,27 +35,6 @@ body{
     margin-bottom: 2rem;
 }
 
-.icon {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.icon:last-child{
-    font-size: 1.1rem;
-}
-
-.icon img:first-child{
-    margin: 0 0 0 0.2rem;
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-.icon img:last-child{
-    margin: 0 0 0 0.2rem;
-    width: 3rem;
-    height: 3rem;
-}
 
 .confirm-email p{
     width: 33.5rem;
