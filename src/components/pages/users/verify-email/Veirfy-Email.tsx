@@ -82,7 +82,7 @@ export function VerifyEmail(){
     // }
 
     return(
-        <div className={block ? styles.container : styles.none}>
+        <div className={block ? styles.none: styles.container}>
             <Header />
             <div className={styles['verification-content']}>
                 <img src={verificationImg} alt="" />
