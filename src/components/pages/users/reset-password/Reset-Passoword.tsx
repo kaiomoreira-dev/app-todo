@@ -21,10 +21,19 @@ export function ResetPassword() {
     localStorage.setItem('tokenResetPassword', token as string) 
 
     const tokebResetPassword = localStorage.getItem('tokenResetPassword')
-    if(tokebResetPassword === token || !token){
+    console.log(tokebResetPassword)
+    console.log(token)
+    if(!token){
+        console.log('entrou no token falso')
         setBlock(true)
         window.location.href = "/login"
     }
+    if(tokebResetPassword === token){
+        console.log('entrou no token ja existente')
+        setBlock(true)
+        window.location.href = "/login"
+    }
+    
     
 
     //[x] criar estado para armazenar os dados do formulário
