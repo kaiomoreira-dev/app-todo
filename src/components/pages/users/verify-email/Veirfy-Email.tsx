@@ -35,7 +35,7 @@ export function VerifyEmail(){
                 return new Promise((resolve) => {
                     setTimeout(()=>{
                     resolve(true)
-                    }, 999999)
+                    }, 5000)
                 })
             }
 
