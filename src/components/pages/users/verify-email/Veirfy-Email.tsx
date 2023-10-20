@@ -26,10 +26,8 @@ export function VerifyEmail(){
 
             if(emails){
                 arrayEmails = JSON.parse(emails);
-                setBlock(true);
-
             }
-            
+            setBlock(true);
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
