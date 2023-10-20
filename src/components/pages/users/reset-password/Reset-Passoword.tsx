@@ -18,22 +18,25 @@ export function ResetPassword() {
 
     const params = new URLSearchParams(search);
     const token = params.get('token'); 
-    localStorage.setItem('tokenResetPassword', token as string) 
 
+    
+    function blockScree(){
     const tokebResetPassword = localStorage.getItem('tokenResetPassword')
     console.log(tokebResetPassword)
     console.log(token)
-    if(!token){
-        console.log('entrou no token falso')
-        setBlock(true)
-        window.location.href = "/login"
+        if(!token){
+            console.log('entrou no token falso')
+            setBlock(true)
+            window.location.href = "/login"
+        }
+        if(tokebResetPassword === token){
+            console.log('entrou no token ja existente')
+            setBlock(true)
+            window.location.href = "/login"
+        }
+        
     }
-    if(tokebResetPassword === token){
-        console.log('entrou no token ja existente')
-        setBlock(true)
-        window.location.href = "/login"
-    }
-    
+    blockScree()
     
 
     //[x] criar estado para armazenar os dados do formulário
@@ -71,6 +74,7 @@ export function ResetPassword() {
                 confirmPassword: ''
             })
             await responseResetPassword.json()
+            localStorage.setItem('tokenResetPassword', token as string) 
 
             //[x] redirecionar para a página de login
             navigate('/login')
@@ -80,7 +84,6 @@ export function ResetPassword() {
             navigate('/login')
         }
     }
-
      //[x] criar metodo para receber os dados do formulário
      function handleOnChange(event: ChangeEvent<HTMLInputElement>){
         const {name, value} = event.target
@@ -91,7 +94,7 @@ export function ResetPassword() {
         })
     }
 
-
+    
   return (
     <div className={block ? styles.none : styles.container}>
         <Header />
