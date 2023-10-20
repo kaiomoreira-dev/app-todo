@@ -4,8 +4,6 @@ import { Footer } from '../../../footer/Footer';
 import { Header } from '../../../header/Header';
 import styles from './Verify-Email.module.css';
 import verificationImg from '../../../../assets/verification.png';
-import rocketImg from '../../../../assets/rocket.svg';
-import todoImg from '../../../../assets/todo.svg';
 import { useLocation, useNavigate } from 'react-router';
 import { useState } from 'react';
 
