@@ -5,9 +5,11 @@ import { Header } from '../../../header/Header';
 import styles from './Verify-Email.module.css';
 import verificationImg from '../../../../assets/verification.png';
 import { useLocation, useNavigate } from 'react-router';
+import { useState } from 'react';
+import { Loader } from '../../../loader/Loader';
 
 export function VerifyEmail(){
-    // const [block, setBlock] = useState<boolean>(false)
+    const [block, setBlock] = useState<boolean>(false)
     
     const { search } = useLocation();
 
@@ -23,12 +25,14 @@ export function VerifyEmail(){
             let arrayEmails = [];
 
             if(!email || !token){
+                setBlock(true)
                 window.location.href = "/login"
             }
             // se email existir no storage ou token não existir
             if(emails){
                 arrayEmails = JSON.parse(emails);
                 if(emails.includes(email) || !token){
+                    setBlock(true)
                     window.location.href = "/login"
                 }
             }
@@ -64,24 +68,8 @@ export function VerifyEmail(){
     }
     verifyEmail();
 
-    // useEffect(()=>{
-    //     function verifyRouter(){
-    //     const emails = localStorage.getItem('emails') as unknown as string[];
-        
-    //     // exemplo https://localhost:300/reset-password
-    //     if(!email || !token){
-    //         navigate("/login")
-    //     }
-        
-    //     // se email existir no storage ou token não existir
-    //     if(emails.includes(email) || !token){
-    //         navigate("/login")
-    //     }
-    // }
-    // verifyRouter();
-    // })
     return(
-        <div className={styles.container}>
+        <div className={block ? styles.none : styles.container}>
             <Header />
             <div className={styles['verification-content']}>
                 <img src={verificationImg} alt="" />
