@@ -20,14 +20,12 @@ export function VerifyEmail(){
 
     async function verifyEmail(){
        try {
-        setBlock(false);
             const emails = localStorage.getItem('emails');
             let arrayEmails = [];
 
             if(emails){
                 arrayEmails = JSON.parse(emails);
             }
-            setBlock(true);
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
