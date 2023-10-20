@@ -4,8 +4,10 @@ import { Footer } from '../../../footer/Footer';
 import { Header } from '../../../header/Header';
 import styles from './Verify-Email.module.css';
 import verificationImg from '../../../../assets/verification.png';
+import rocketImg from '../../../../assets/rocket.svg';
+import todoImg from '../../../../assets/todo.svg';
 import { useLocation, useNavigate } from 'react-router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export function VerifyEmail(){
     const [block, setBlock] = useState<boolean>(false)
@@ -20,8 +22,18 @@ export function VerifyEmail(){
 
     async function verifyEmail(){
        try {
-            const emails = localStorage.getItem('emails') as unknown as string[];
-           
+            setBlock(true);
+            const emails = localStorage.getItem('emails');
+            let arrayEmails = [];
+
+            if(emails){
+                arrayEmails = JSON.parse(emails);
+
+                if(arrayEmails.includes(email)){
+                    navigate("/login")
+                }
+            }
+            setBlock(false);
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
@@ -29,7 +41,7 @@ export function VerifyEmail(){
                 },
                 body: JSON.stringify({})
             });
-            setBlock(false);
+
             async function redirect(){
                 return new Promise((resolve) => {
                     setTimeout(()=>{
@@ -38,9 +50,9 @@ export function VerifyEmail(){
                 })
             }
 
-            emails.push(email);
+            arrayEmails.push(email);
 
-            localStorage.setItem('emails', JSON.stringify(emails));
+            localStorage.setItem('emails', JSON.stringify(arrayEmails));
            
         redirect().then((result)=>{
             if (result) {
@@ -52,29 +64,27 @@ export function VerifyEmail(){
         console.log(error)
        }
     }
-  
+    if(!block){
+        verifyEmail();
+    }
 
-    useEffect(()=>{
-        function verifyRouter(){
-            const emails = localStorage.getItem('emails') as unknown as string[];
-
-            // se email e token não existir no storage
-            // exemplo https://localhost:300/reset-password
-            if(!email || !token){
-                navigate("/login")
-            }
-            
-            // se email existir no storage ou token não existir
-            if(emails.includes(email) || !token){
-                navigate("/login")
-            }
-            verifyEmail();
-        }
-        verifyRouter();
-    })
+    // function verifyRouter(){
+    //     const emails = localStorage.getItem('emails') as unknown as string[];
+        
+    //     // exemplo https://localhost:300/reset-password
+    //     if(!email || !token){
+    //         navigate("/login")
+    //     }
+        
+    //     // se email existir no storage ou token não existir
+    //     if(emails.includes(email) || !token){
+    //         navigate("/login")
+    //     }
+    //     verifyEmail();
+    // }
 
     return(
-        <div className={block ? styles.none : styles.container}>
+        <div className={block ? styles.container : styles.none}>
             <Header />
             <div className={styles['verification-content']}>
                 <img src={verificationImg} alt="" />
