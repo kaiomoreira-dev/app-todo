@@ -5,10 +5,10 @@ import { Header } from '../../../header/Header';
 import styles from './Verify-Email.module.css';
 import verificationImg from '../../../../assets/verification.png';
 import { useLocation, useNavigate } from 'react-router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export function VerifyEmail(){
-    const [block, setBlock] = useState<boolean>(false)
+    // const [block, setBlock] = useState<boolean>(false)
     
     const { search } = useLocation();
 
@@ -56,9 +56,7 @@ export function VerifyEmail(){
         console.log(error)
        }
     }
-    if(!block){
-        verifyEmail();
-    }
+    verifyEmail();
 
     useEffect(()=>{
         function verifyRouter(){
@@ -77,7 +75,7 @@ export function VerifyEmail(){
     verifyRouter();
     })
     return(
-        <div className={block ? styles.none : styles.container}>
+        <div className={styles.container}>
             <Header />
             <div className={styles['verification-content']}>
                 <img src={verificationImg} alt="" />
