@@ -3,8 +3,6 @@ import { Footer } from '../../../footer/Footer'
 import { Header } from '../../../header/Header'
 import styles from './Forgot-Password.module.css'
 import { Link, useNavigate } from 'react-router-dom'
-import rocketImg from '../../../../assets/rocket.svg'
-import todoImg from '../../../../assets/todo.svg'
 import sendEmailImg from '../../../../assets/send-email.png'
 
 
@@ -58,7 +56,7 @@ export function ForgotPassword(){
         return new Promise((resolve) => {
             setTimeout(()=>{
             resolve(true)
-            }, 5000)
+            }, 3000)
         })
     }
 
@@ -84,13 +82,6 @@ export function ForgotPassword(){
                             Um e-mail com instruções para redefinir sua senha foi enviado para o seu endereço de e-mail. Por favor, verifique sua caixa de entrada e siga as instruções fornecidas. 
                         </p>
                 </div>
-                
-                <span className={message ? styles.icon : styles.none}>
-                    Equipe
-                    <img src={rocketImg} alt="" />
-                    <img src={todoImg} alt="" />
-                </span>
-
                 <form id={message ? styles.none : ''} action="" onSubmit={handleForgotPassword}>
                     <fieldset>
                     <div className={styles['title-content']}>
