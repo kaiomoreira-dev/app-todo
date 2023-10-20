@@ -21,7 +21,6 @@ export function VerifyEmail(){
     async function verifyEmail(){
        try {
             const emails = localStorage.getItem('emails') as unknown as string[];
-        setBlock(true);
            
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
@@ -75,7 +74,7 @@ export function VerifyEmail(){
     })
 
     return(
-        <div className={block ? styles.none: styles.container}>
+        <div className={block ? styles.none : styles.container}>
             <Header />
             <div className={styles['verification-content']}>
                 <img src={verificationImg} alt="" />
