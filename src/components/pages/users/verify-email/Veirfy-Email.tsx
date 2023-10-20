@@ -5,7 +5,6 @@ import { Header } from '../../../header/Header';
 import styles from './Verify-Email.module.css';
 import verificationImg from '../../../../assets/verification.png';
 import { useLocation, useNavigate } from 'react-router';
-import { useEffect } from 'react';
 
 export function VerifyEmail(){
     // const [block, setBlock] = useState<boolean>(false)
@@ -23,8 +22,15 @@ export function VerifyEmail(){
             const emails = localStorage.getItem('emails');
             let arrayEmails = [];
 
+            if(!email || !token){
+                window.location.href = "/login"
+            }
+            // se email existir no storage ou token não existir
             if(emails){
                 arrayEmails = JSON.parse(emails);
+                if(emails.includes(email) || !token){
+                    window.location.href = "/login"
+                }
             }
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
@@ -58,22 +64,22 @@ export function VerifyEmail(){
     }
     verifyEmail();
 
-    useEffect(()=>{
-        function verifyRouter(){
-        const emails = localStorage.getItem('emails') as unknown as string[];
+    // useEffect(()=>{
+    //     function verifyRouter(){
+    //     const emails = localStorage.getItem('emails') as unknown as string[];
         
-        // exemplo https://localhost:300/reset-password
-        if(!email || !token){
-            navigate("/login")
-        }
+    //     // exemplo https://localhost:300/reset-password
+    //     if(!email || !token){
+    //         navigate("/login")
+    //     }
         
-        // se email existir no storage ou token não existir
-        if(emails.includes(email) || !token){
-            navigate("/login")
-        }
-    }
-    verifyRouter();
-    })
+    //     // se email existir no storage ou token não existir
+    //     if(emails.includes(email) || !token){
+    //         navigate("/login")
+    //     }
+    // }
+    // verifyRouter();
+    // })
     return(
         <div className={styles.container}>
             <Header />
