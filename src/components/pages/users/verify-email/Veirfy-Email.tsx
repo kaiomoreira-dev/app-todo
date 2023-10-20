@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 
 export function VerifyEmail(){
-    const [block, setBlock] = useState<boolean>(false)
+    const [block, setBlock] = useState<boolean>(true)
     
     const { search } = useLocation();
 
@@ -20,8 +20,7 @@ export function VerifyEmail(){
 
     async function verifyEmail(){
        try {
-            setBlock(true);
-          
+            setBlock(false)
             const emails = localStorage.getItem('emails') as unknown as string[];
            
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
@@ -69,7 +68,6 @@ export function VerifyEmail(){
             if(emails.includes(email) || !token){
                 navigate("/login")
             }
-        
         }
         verifyRouter();
 
