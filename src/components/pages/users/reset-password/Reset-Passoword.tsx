@@ -21,7 +21,7 @@ export function ResetPassword() {
     localStorage.setItem('tokenResetPassword', token as string) 
 
     const tokebResetPassword = localStorage.getItem('tokenResetPassword')
-    if(tokebResetPassword || !token){
+    if(tokebResetPassword === token || !token){
         setBlock(true)
         window.location.href = "/login"
     }
