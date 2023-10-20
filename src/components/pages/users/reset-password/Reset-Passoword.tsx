@@ -22,8 +22,6 @@ export function ResetPassword() {
     
     function blockScree(){
     const tokebResetPassword = localStorage.getItem('tokenResetPassword')
-    console.log(tokebResetPassword)
-    console.log(token)
         if(!token){
             console.log('entrou no token falso')
             setBlock(true)
@@ -81,7 +79,6 @@ export function ResetPassword() {
             navigate('/login')
 
         } catch (error) {
-            alert('Erro ao redefinir a senha')
             navigate('/login')
         }
     }
