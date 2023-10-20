@@ -114,12 +114,13 @@ export function Register(){
                     <p>
                         Se você não receber o e-mail dentro de alguns minutos, verifique sua pasta de spam ou entre em contato conosco para obter ajuda.
                     </p>
-                </div>
-                <span className={message ? styles.icon : styles.none}>
+                    <span className={message ? styles.icon : styles.none}>
                     Equipe
                     <img src={rocketImg} alt="" />
                     <img src={todoImg} alt="" />
                 </span>
+                </div>
+                
                 <form 
                 className={message ? styles.none : styles.form} 
                 id="register-account" 

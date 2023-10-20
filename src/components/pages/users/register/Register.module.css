@@ -38,6 +38,7 @@ body{
 .icon {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .icon:last-child{
@@ -161,4 +162,29 @@ body{
     .form{
         width: 23rem;
     }
+
+    .confirm-email span{
+        font-size: 2rem;
+        width: 23rem;
+    }
+
+    .confirm-email img{
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .confirm-email{
+        width: 80vw;
+        
+    }
+
+    .confirm-email strong{
+        width: 20rem;
+        font-size: 1.8rem;
+    }
+
+    .confirm-email p{
+        width: 23rem;
+    }
+
 }
