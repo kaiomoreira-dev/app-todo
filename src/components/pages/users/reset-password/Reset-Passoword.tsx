@@ -66,9 +66,10 @@ export function ResetPassword() {
                     'Content-Type': 'application/json'
                 }
             })
-
+            const data = await responseResetPassword.json()
+            console.log(data)
             if(!responseResetPassword.ok) throw new Error()
-
+            
             setResetPassword({
                 password: '',
                 confirmPassword: ''
