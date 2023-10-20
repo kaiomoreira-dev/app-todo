@@ -18,7 +18,7 @@ export function ResetPassword() {
 
     const params = new URLSearchParams(search);
     const token = params.get('token'); 
-    localStorage.setItem('tokenResetPassword', token as string) 
+     
     
     function blockScree(){
     const tokebResetPassword = localStorage.getItem('tokenResetPassword')
@@ -64,10 +64,9 @@ export function ResetPassword() {
                     'Content-Type': 'application/json'
                 }
             })
-            const data = await responseResetPassword.json()
-            console.log(data)
             if(!responseResetPassword.ok) throw new Error()
-            
+            localStorage.setItem('tokenResetPassword', token as string)
+        
             setResetPassword({
                 password: '',
                 confirmPassword: ''
