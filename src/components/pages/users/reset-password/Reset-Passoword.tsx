@@ -84,7 +84,7 @@ export function ResetPassword() {
 
 
   return (
-    <div className={block ? styles.container : styles.none}>
+    <div className={block ? styles.none : styles.container}>
         <Header />
         <main className={styles['main-content']}>
         <form action="" onSubmit={handleResetPassword}>
