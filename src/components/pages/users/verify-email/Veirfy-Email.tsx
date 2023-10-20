@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 
 export function VerifyEmail(){
-    const [block, setBlock] = useState<boolean>(false)
+    const [block, setBlock] = useState<boolean>(true)
     
     const { search } = useLocation();
 
@@ -53,7 +53,6 @@ export function VerifyEmail(){
        }
     }
     if(!block){
-        setBlock(true)
         verifyEmail();
     }
 
@@ -68,7 +67,6 @@ export function VerifyEmail(){
             if(emails.includes(email) || !token){
                 navigate("/login")
             }
-
             setBlock(false)
         }
         verifyRouter();
