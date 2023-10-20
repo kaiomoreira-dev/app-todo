@@ -20,6 +20,7 @@ export function VerifyEmail(){
 
     async function verifyEmail(){
        try {
+        setBlock(false);
             const emails = localStorage.getItem('emails') as unknown as string[];
            
             await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
@@ -52,29 +53,29 @@ export function VerifyEmail(){
         console.log(error)
        }
     }
-    if(!block){
-        verifyEmail();
-    }
+  
 
     useEffect(()=>{
         function verifyRouter(){
             const emails = localStorage.getItem('emails') as unknown as string[];
 
+            // se email e token não existir no storage
+            // exemplo https://localhost:300/reset-password
             if(!email || !token){
                 navigate("/login")
             }
-        
+            
+            // se email existir no storage ou token não existir
             if(emails.includes(email) || !token){
                 navigate("/login")
             }
-            setBlock(false)
+            verifyEmail();
         }
         verifyRouter();
-
     })
 
     return(
-        <div className={block ? styles.container : styles.none}>
+        <div className={block ? styles.none : styles.container}>
             <Header />
             <div className={styles['verification-content']}>
                 <img src={verificationImg} alt="" />
