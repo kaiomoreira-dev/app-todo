@@ -4,8 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import {Header} from '../../../header/Header'
 import styles from './Register.module.css'
 import { Footer } from '../../../footer/Footer'
-import rocketImg from '../../../../assets/rocket.svg'
-import todoImg from '../../../../assets/todo.svg'
 import sendEmailImg from '../../../../assets/send-email.png'
 
 export interface IUser{
