@@ -53,7 +53,7 @@ export function ResetPassword() {
             }
             // console.log(process.env.API_URL)
 
-            const responseResetPassword = await fetch(`https://api-todo-production-4c9e.up.railway.app/api/users/reset-password?token=${token}`,{
+            const responseResetPassword = await fetch(`https://api-todo.kaiomoreira-dev.com.br/api/users/reset-password?token=${token}`,{
                 body: JSON.stringify(
                     {
                         password: resetPassword.password

@@ -3,7 +3,7 @@ interface IToken {
 }
 
 export async function getAccessToken() {
-    const responseGetAccessToken = await fetch(`https://api-todo-production-4c9e.up.railway.app/api/users/refresh-token`, {
+    const responseGetAccessToken = await fetch(`https://api-todo.kaiomoreira-dev.com.br/api/users/refresh-token`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',

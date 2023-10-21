@@ -22,7 +22,7 @@ export function ForgotPassword(){
     async function handleForgotPassword(event: FormEvent<HTMLFormElement>){
         try {
             event.preventDefault();
-             const responseConfirmEmail = await fetch(`https://api-todo-production-4c9e.up.railway.app/api/users/forgot-password`,{
+             const responseConfirmEmail = await fetch(`https://api-todo.kaiomoreira-dev.com.br/api/users/forgot-password`,{
                 body: JSON.stringify(
                     {
                         email: emailField.email,

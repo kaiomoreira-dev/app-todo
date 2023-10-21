@@ -39,7 +39,7 @@ export function Register(){
             }
             // console.log(process.env.API_URL)
 
-            const responseRegisterUser = await fetch(`https://api-todo-production-4c9e.up.railway.app/api/users`,{
+            const responseRegisterUser = await fetch(`https://api-todo.kaiomoreira-dev.com.br/api/users`,{
                 body: JSON.stringify(
                     {
                         name: `${registerUser.firstname} ${registerUser.lastname}`,

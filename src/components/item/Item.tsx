@@ -41,7 +41,7 @@ export function Item({id, completed, description}: IPropdItem){
     //[] criar função para deletar a tarefa
     async function handleDeleteTodo(){
         try {
-            await fetch(`https://api-todo-production-4c9e.up.railway.app/api/todos/${id}`,{
+            await fetch(`https://api-todo.kaiomoreira-dev.com.br/api/todos/${id}`,{
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export function Item({id, completed, description}: IPropdItem){
     //[x] criar função para marcar a tarefa como concluida
     async function handleMarkTodoAsCompleted(){
         try {
-            const responseMarkTodoAsCompleted = await fetch(`https://api-todo-production-4c9e.up.railway.app/api/todos/mark-completed/${id}`,{
+            const responseMarkTodoAsCompleted = await fetch(`https://api-todo.kaiomoreira-dev.com.br/api/todos/mark-completed/${id}`,{
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
