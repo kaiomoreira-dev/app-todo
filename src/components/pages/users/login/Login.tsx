@@ -18,7 +18,7 @@ export function Login(){
     } as IUser)
 
     const navigate = useNavigate()
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     //[x] criar metodo para enviar as informações de login para a API do backend
     async function handleLoginUser(event: FormEvent<HTMLFormElement>){
         try {
