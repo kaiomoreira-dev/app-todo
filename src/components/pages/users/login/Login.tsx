@@ -64,7 +64,7 @@ export function Login(){
     return(
     <div className={styles.container}>
             <Header/>
-            <main>
+            <main className={styles['main-content']}>
             <div className={styles['form-center']}>
                 <form 
                 className={styles.form} 
