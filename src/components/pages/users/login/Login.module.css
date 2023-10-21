@@ -139,6 +139,29 @@ body {
 
 @media (max-width: 576px) {
     .form{
-        width: 23rem;
+        width: 20rem;
     }
+
+    .fieldset label{
+        font-size: 0.8rem;
+    }
+    .title{
+        font-size: 1.6rem;
+    }
+
+    .footer button {
+        width: 15rem;
+    }
+    .fieldset > input{
+        width: 16rem;
+    }
+    
+    .fieldset a{
+        font-size: 0.7rem;
+    }
+
+    .footer span:last-child {
+        font-size: 0.7rem;
+    }
+
 }

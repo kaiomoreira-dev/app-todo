@@ -106,8 +106,8 @@ body{
     border-radius: 0.3rem;
     border: none;
     margin-top: 5rem;
-    margin-bottom: 2rem;
-    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
 }
 
@@ -138,8 +138,23 @@ body{
 }
 
 @media (max-width: 576px) {
+    .container .confirm-email span{
+        font-size: 1.6rem;
+        width: 20rem;
+    }
+    
+    
+    .container .confirm-email p{
+        font-size: 1.1rem;
+        width: 20rem;
+    }
+    
     .form{
-        width: 23rem;
+        width: 20rem;
+    }
+
+    .fieldset label{
+        font-size: 0.8rem;
     }
 
     .confirm-email span{
@@ -164,6 +179,15 @@ body{
 
     .confirm-email p{
         width: 23rem;
+    }
+
+    .title{
+        font-size: 1.6rem;
+    }
+
+    .footer button {
+        margin-top: 4rem;
+        width: 15rem;
     }
 
 }

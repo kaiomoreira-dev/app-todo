@@ -28,8 +28,8 @@
 }
 
 :focus{
-    outline: transparent;
-    box-shadow: 0 0 0 2px var(--purple-dark);
+    outline: 2px solid var(--purple-dark);
+    /* box-shadow: 0 0 0 2px var(--purple-dark); */
     border-radius: 0.3rem;
 }
 

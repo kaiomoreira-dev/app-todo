@@ -4,8 +4,6 @@ import { Header } from '../../../header/Header'
 import styles from './Login.module.css'
 import { Footer } from '../../../footer/Footer';
 
-
-
 export interface IUser{
     email: string,
     password: string,
@@ -18,7 +16,7 @@ export function Login(){
     } as IUser)
 
     const navigate = useNavigate()
-    // window.scrollTo(0, 0);
+    
     //[x] criar metodo para enviar as informações de login para a API do backend
     async function handleLoginUser(event: FormEvent<HTMLFormElement>){
         try {
@@ -84,12 +82,12 @@ export function Login(){
                     </fieldset>
                     <footer className={styles.footer}>
                     <button type='submit'>Entrar</button>
-                        <span>
-                            <p>
-                                Não possui cadastro?
-                            </p>
-                            <Link to="/register">fazer cadastro</Link>
-                        </span>
+                    <span>
+                        <p>
+                            Não possui cadastro?
+                        </p>
+                        <Link to="/register">fazer cadastro</Link>
+                    </span>
                     </footer>
                 </form>
             </div>
