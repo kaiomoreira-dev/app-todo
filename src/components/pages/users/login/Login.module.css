@@ -1,6 +1,7 @@
-body{
+body {
+    overflow-y: scroll;
     overflow-x: hidden;
-}
+  }
 .container{
     display: flex;
     min-height: 100vh;
