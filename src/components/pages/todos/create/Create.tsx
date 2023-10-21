@@ -66,7 +66,7 @@ export function Create(){
         
             // console.log(process.env.API_URL)
 
-            const responseCreateTodo = await fetch(`https://api-todo-oe5w.onrender.com/api/todos`,{
+            const responseCreateTodo = await fetch(`https://api-todo-production-4c9e.up.railway.app/api/todos`,{
                 body: JSON.stringify(
                     {
                         description: `${descriptionTodo.description}`
@@ -98,7 +98,7 @@ export function Create(){
     }
 
     async function handleLogout(){
-        await fetch(`https://api-todo-oe5w.onrender.com/api/users/logout`,{
+        await fetch(`https://api-todo-production-4c9e.up.railway.app/api/users/logout`,{
             body: JSON.stringify(
                 {
                     refreshToken: `${localStorage.getItem('refreshToken')}`
@@ -127,7 +127,7 @@ export function Create(){
         async function loadTodos(){
             const token = await getAccessToken()
            try {
-                const responseListTodo = await fetch(`https://api-todo-oe5w.onrender.com/api/todos/user`,{
+                const responseListTodo = await fetch(`https://api-todo-production-4c9e.up.railway.app/api/todos/user`,{
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -146,7 +146,7 @@ export function Create(){
 
         async function loadCountAllTodos(){
             const token = await getAccessToken()
-            const responseCountAllTodo = await fetch(`https://api-todo-oe5w.onrender.com/api/todos/count-all`,{
+            const responseCountAllTodo = await fetch(`https://api-todo-production-4c9e.up.railway.app/api/todos/count-all`,{
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -161,7 +161,7 @@ export function Create(){
 
         async function loadCountCompletedTodos(){
             const token = await getAccessToken()
-            const responseCountAllTodo = await fetch(`https://api-todo-oe5w.onrender.com/api/todos/count-ready`,{
+            const responseCountAllTodo = await fetch(`https://api-todo-production-4c9e.up.railway.app/api/todos/count-ready`,{
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

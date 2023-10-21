@@ -35,7 +35,7 @@ export function VerifyEmail(){
                     window.location.href = "/login"
                 }
             }
-            await fetch(`https://api-todo-oe5w.onrender.com/api/users/verify-email?email=${email}&token=${token}`, {
+            await fetch(`https://api-todo-production-4c9e.up.railway.app/api/users/verify-email?email=${email}&token=${token}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
