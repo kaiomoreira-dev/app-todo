@@ -9,6 +9,12 @@ body {
     flex-direction: column;
 }
 
+
+.main-content{
+    min-height: 100vh;
+    z-index: 1;
+}
+
 .form-center{
     height: 100vh;
     display: flex;

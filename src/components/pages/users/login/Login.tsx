@@ -64,6 +64,7 @@ export function Login(){
     return(
     <div className={styles.container}>
             <Header/>
+            <main>
             <div className={styles['form-center']}>
                 <form 
                 className={styles.form} 
@@ -92,7 +93,8 @@ export function Login(){
                     </footer>
                 </form>
             </div>
+            </main>
             <Footer />
-        </div>
+    </div>
     )
 }
