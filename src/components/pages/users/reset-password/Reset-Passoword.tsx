@@ -12,7 +12,7 @@ export interface IUser{
 
 export function ResetPassword() {
     const [block, setBlock] = useState<boolean>(false)
-    const [message, setMessage] = useState<boolean>(true)
+    const [message, setMessage] = useState<boolean>(false)
     
     const { search } = useLocation();
 
