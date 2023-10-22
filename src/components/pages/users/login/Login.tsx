@@ -39,6 +39,11 @@ export function Login(){
             })
             const data = await responseLoginUser.json()
 
+            if(!data.emailActive){
+                alert('Lembrete: Por favor, verifique seu e-mail e confirme seu endereço para ativar sua conta.')
+                return
+            }
+
             //[x] armazenar accessToken, refreshToken e user.id no localStorage
             localStorage.setItem('accessToken', data.accessToken)
             localStorage.setItem('refreshToken', data.refreshToken)
