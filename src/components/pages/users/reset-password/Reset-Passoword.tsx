@@ -12,6 +12,7 @@ export interface IUser{
 
 export function ResetPassword() {
     const [block, setBlock] = useState<boolean>(false)
+    const [message, setMessage] = useState<boolean>(false)
     
     const { search } = useLocation();
 
@@ -23,15 +24,15 @@ export function ResetPassword() {
     
     function blockScree(){
     const tokebResetPassword = localStorage.getItem('tokenResetPassword')
-        // if(!token){
-        //     console.log('entrou no token falso')
-        //     setBlock(true)
-        //     window.location.href = "/login"
-        // }
+        if(!token){
+            console.log('entrou no token falso')
+            setBlock(true)
+            window.location.href = "/login"
+        }
         if(tokebResetPassword === token){
             console.log('entrou no token ja existente')
-            // setBlock(false)
-            // window.location.href = "/login"
+            setBlock(false)
+            window.location.href = "/login"
         }
         
     }
@@ -73,7 +74,7 @@ export function ResetPassword() {
                 confirmPassword: ''
             })
             await responseResetPassword.json()
-            setBlock(true)
+            setMessage(true)
             //[x] redirecionar para a página de login
             redirect().then((result)=>{
                 if (result) {
@@ -106,7 +107,7 @@ export function ResetPassword() {
     <div className={block ? styles.none : styles.container}>
         <Header />
         <main className={styles['main-content']}>
-        <div className={block ? styles['verification-content'] : styles.none}>
+        <div className={message ? styles['verification-content'] : styles.none}>
                 <img src={verificationImg} alt="" />
                 <strong>Senha Redefinida com Sucesso!</strong>
                 <p>
@@ -114,7 +115,7 @@ export function ResetPassword() {
                 </p>
             </div>
         <form 
-        className={block ? styles.none : ''}
+        className={message ? styles.none : ''}
         action="" 
         onSubmit={handleResetPassword}>
             <fieldset>
