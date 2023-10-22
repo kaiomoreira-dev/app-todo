@@ -31,8 +31,8 @@ export function ResetPassword() {
         }
         if(tokebResetPassword === token){
             console.log('entrou no token ja existente')
-            setBlock(false)
-            window.location.href = "/login"
+            // setBlock(true)
+            // window.location.href = "/login"
         }
         
     }
