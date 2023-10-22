@@ -3,6 +3,7 @@ import { Footer } from '../../../footer/Footer';
 import { Header } from '../../../header/Header';
 import styles from './Reset-Password.module.css';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import verificationImg from '../../../../assets/verification.png'
 
 export interface IUser{
     password: string,
@@ -22,15 +23,15 @@ export function ResetPassword() {
     
     function blockScree(){
     const tokebResetPassword = localStorage.getItem('tokenResetPassword')
-        if(!token){
-            console.log('entrou no token falso')
-            setBlock(true)
-            window.location.href = "/login"
-        }
+        // if(!token){
+        //     console.log('entrou no token falso')
+        //     setBlock(true)
+        //     window.location.href = "/login"
+        // }
         if(tokebResetPassword === token){
             console.log('entrou no token ja existente')
-            setBlock(true)
-            window.location.href = "/login"
+            // setBlock(false)
+            // window.location.href = "/login"
         }
         
     }
@@ -72,14 +73,23 @@ export function ResetPassword() {
                 confirmPassword: ''
             })
             await responseResetPassword.json()
-            
-
+            setBlock(true)
             //[x] redirecionar para a página de login
-            navigate('/login')
-
+            redirect().then((result)=>{
+                if (result) {
+                    navigate("/login")
+                }
+            })
         } catch (error) {
             navigate('/login')
         }
+    }
+    async function redirect(){
+        return new Promise((resolve) => {
+            setTimeout(()=>{
+            resolve(true)
+            }, 3000)
+        })
     }
      //[x] criar metodo para receber os dados do formulário
      function handleOnChange(event: ChangeEvent<HTMLInputElement>){
@@ -96,7 +106,17 @@ export function ResetPassword() {
     <div className={block ? styles.none : styles.container}>
         <Header />
         <main className={styles['main-content']}>
-        <form action="" onSubmit={handleResetPassword}>
+        <div className={block ? styles['verification-content'] : styles.none}>
+                <img src={verificationImg} alt="" />
+                <strong>Senha Redefinida com Sucesso!</strong>
+                <p>
+                Sua senha foi redefinida com sucesso. Agora você pode fazer login com sua nova senha. 
+                </p>
+            </div>
+        <form 
+        className={block ? styles.none : ''}
+        action="" 
+        onSubmit={handleResetPassword}>
             <fieldset>
             <div className={styles['title-content']}>
                 <span>Redefinir sua senha</span>
