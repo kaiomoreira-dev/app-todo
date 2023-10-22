@@ -12,7 +12,7 @@ export interface IUser{
 
 export function ResetPassword() {
     const [block, setBlock] = useState<boolean>(false)
-    const [message, setMessage] = useState<boolean>(false)
+    const [message, setMessage] = useState<boolean>(true)
     
     const { search } = useLocation();
 
@@ -25,12 +25,10 @@ export function ResetPassword() {
     function blockScree(){
     const tokebResetPassword = localStorage.getItem('tokenResetPassword')
         if(!token){
-            console.log('entrou no token falso')
             setBlock(true)
             window.location.href = "/login"
         }
         if(tokebResetPassword === token){
-            console.log('entrou no token ja existente')
             // setBlock(true)
             // window.location.href = "/login"
         }
@@ -115,7 +113,7 @@ export function ResetPassword() {
                 </p>
             </div>
         <form 
-        className={message ? styles.none : ''}
+        id={message ? styles.none : styles['fomr-class'] }
         action="" 
         onSubmit={handleResetPassword}>
             <fieldset>
