@@ -43,7 +43,7 @@ export function Login(){
                 alert('E-mail ou senha incorretos')
                 return
             }
-
+            console.log(data.emailActive)
             if(data.emailActive === false){
                 console.log(data.emailActive)
                 alert('Lembrete: Por favor, verifique seu e-mail e confirme seu endereço para ativar sua conta.')
