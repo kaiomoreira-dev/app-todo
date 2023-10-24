@@ -47,10 +47,6 @@ export function ResetPassword() {
         try {
             event.preventDefault();
            
-            if(resetPassword.password !== resetPassword.confirmPassword){
-                alert('As senhas não conferem')
-                return
-            }
             // console.log(process.env.API_URL)
 
             const responseResetPassword = await fetch(`https://api-todo.kaiomoreira-dev.com.br/api/users/reset-password?token=${token}`,{

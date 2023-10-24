@@ -39,6 +39,11 @@ export function Login(){
             })
             const data = await responseLoginUser.json()
 
+            if(responseLoginUser.status === 400){
+                alert('E-mail ou senha incorretos')
+                return
+            }
+
             if(data.emailActive === false){
                 console.log(data.emailActive)
                 alert('Lembrete: Por favor, verifique seu e-mail e confirme seu endereço para ativar sua conta.')
@@ -52,7 +57,7 @@ export function Login(){
             //[x] redirecionar para a página de tarefas
             navigate("/")
         } catch (error) {
-            alert('Senha ou e-mail incorretos')
+            console.log(error)
         }
     }
     //[x] criar metodo para receber os dados do formulário
