@@ -40,6 +40,7 @@ export function Login(){
             const data = await responseLoginUser.json()
 
             if(data.emailActive === false){
+                console.log(data.emailActive)
                 alert('Lembrete: Por favor, verifique seu e-mail e confirme seu endereço para ativar sua conta.')
                 return
             }
