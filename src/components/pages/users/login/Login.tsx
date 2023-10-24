@@ -51,7 +51,6 @@ export function Login(){
             })
 
             const data = await responseLoginUser.json() as unknown as IResponseLoginUser
-            console.log(data.user.emailActive)
             if(responseLoginUser.status === 400){
                 alert('E-mail ou senha incorretos')
                 return
