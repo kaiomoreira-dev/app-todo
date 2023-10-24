@@ -9,6 +9,18 @@ export interface IUser{
     password: string,
 }
 
+interface IResponseLoginUser{
+    user: {
+        id: string
+        name: string,
+        email: string,
+        emailActive: boolean
+        createdAt: string,
+    },
+    accessToken: string,
+    refreshToken: string
+}
+
 export function Login(){
     const [loginUser, setLoginUser] = useState<IUser>({
         email: '',
@@ -37,15 +49,13 @@ export function Login(){
                 email: '',
                 password: '',
             })
-            const data = await responseLoginUser.json()
-
+            const data = await responseLoginUser.json() as unknown as IResponseLoginUser
+            console.log(data.user.emailActive)
             if(responseLoginUser.status === 400){
                 alert('E-mail ou senha incorretos')
                 return
             }
-            console.log(data.emailActive)
-            if(data.emailActive === false){
-                console.log(data.emailActive)
+            if(data.user.emailActive === false ){
                 alert('Lembrete: Por favor, verifique seu e-mail e confirme seu endereço para ativar sua conta.')
                 return
             }
