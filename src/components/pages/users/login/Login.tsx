@@ -49,11 +49,14 @@ export function Login(){
                 email: '',
                 password: '',
             })
+
             const data = await responseLoginUser.json() as unknown as IResponseLoginUser
+            console.log(data.user.emailActive)
             if(responseLoginUser.status === 400){
                 alert('E-mail ou senha incorretos')
                 return
             }
+            
             if(data.user.emailActive === false ){
                 alert('Lembrete: Por favor, verifique seu e-mail e confirme seu endereço para ativar sua conta.')
                 return
